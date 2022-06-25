@@ -9,19 +9,19 @@ describe('findByCorporateNumber', () => {
       body: {
         json: () => {
           return Promise.resolve({
-            'id': '8000020130001',
+            'id': '8000012010038',
             'errors': null,
             'message': '200 - OK.',
             'hojin-infos': [
               {
-                'corporate_number': '8000020130001',
-                'postal_code': '1600023',
-                'location': '東京都新宿区西新宿２丁目８－１',
-                'name': '東京都',
-                'kana': 'とうきようと',
-                'name_en': 'Tokyo Metropolitan Government',
+                'corporate_number': '8000012010038',
+                'postal_code': '1020094',
+                'location': '東京都千代田区紀尾井町１番３号東京ガーデンテラス紀尾井町',
+                'name': 'デジタル庁',
+                'kana': 'でじたるちょう',
+                'name_en': 'Digital Agency',
                 'status': '-',
-                'update_date': '2018-04-03T00:00:00+09:00',
+                'update_date': '2021-09-02T00:00:00+09:00',
               },
             ],
           });
@@ -29,8 +29,8 @@ describe('findByCorporateNumber', () => {
       },
     }));
     const client = new GbizinfoClient({token: 'xxxxx'});
-    const actual = await client.findByCorporateNumber('8000020130001');
+    const actual = await client.findByCorporateNumber('8000012010038');
     expect(actual.length).toEqual(1);
-    expect(actual[0].corporateNumber).toEqual('8000020130001');
+    expect(actual[0].corporateNumber).toEqual('8000012010038');
   });
 });
