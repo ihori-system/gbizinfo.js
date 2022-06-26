@@ -1,6 +1,6 @@
 {
   "name": "@ihori-system/gbizinfo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "gBizINFO REST API client for Node.js",
   "main": "index.js",
   "types": "index.d.ts",
@@ -39,6 +39,6 @@
     "typescript": "^4.7.4"
   },
   "tsd": {
-		"directory": "test"
-	}
+    "directory": "test"
+  }
 }
