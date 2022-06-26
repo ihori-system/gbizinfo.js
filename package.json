@@ -3,13 +3,15 @@
   "version": "0.0.1",
   "description": "gBizINFO REST API client for Node.js",
   "main": "index.js",
+  "types": "index.d.ts",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
     "lint": "eslint .",
-    "test": "npm run test:unit && npm run test:e2e",
+    "test": "npm run test:unit && npm run test:e2e && npm run test:types",
     "test:unit": "jest --config=jest.config.mjs",
+    "test:types": "tsd",
     "test:e2e": "jest --config=jest.config.e2e.mjs",
     "docs": "jsdoc -d ./docs/ lib/index.js"
   },
@@ -32,6 +34,11 @@
     "eslint": "^8.18.0",
     "eslint-config-google": "^0.14.0",
     "jest": "^28.1.1",
-    "jsdoc": "^3.6.10"
-  }
+    "jsdoc": "^3.6.10",
+    "tsd": "^0.21.0",
+    "typescript": "^4.7.4"
+  },
+  "tsd": {
+		"directory": "test"
+	}
 }

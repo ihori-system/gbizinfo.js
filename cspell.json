@@ -3,6 +3,7 @@
     "btcnc"
   ],
   "words": [
+    "codepaths",
     "gbizinfo",
     "hojin",
     "hojininfo",
@@ -10,6 +11,7 @@
     "ihori",
     "lcov",
     "serializers",
+    "tsbuildinfo",
     "undici",
     "unmocked"
   ]
