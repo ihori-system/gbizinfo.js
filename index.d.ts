@@ -14,12 +14,12 @@ export interface Corporation {
   corporateNumber: string
   dateOfEstablishment?: string
   employeeNumber?: number
-  foundingYear: number
+  foundingYear?: number
   kana?: string
-  location: string
+  location?: string
   name: string
   nameEn?: string
-  postalCode: string
+  postalCode?: string
   representativeName?: string
   representativePosition?: string
   status: string
