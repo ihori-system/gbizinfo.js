@@ -3,12 +3,25 @@ export interface GbizinfoClientOption {
 }
 
 export interface Corporation {
+  businessItems?: Array<string>
+  businessSummary?: string
+  capitalStock?: number
+  closeCause?: string
+  closeDate?: string
+  companySizeFemale?: number
+  companySizeMale?: number
+  companyUrl?: string
   corporateNumber: string
-  postalCode: string
+  dateOfEstablishment?: string
+  employeeNumber?: number
+  foundingYear: number
+  kana?: string
   location: string
   name: string
-  kana: string
-  nameEn: string
+  nameEn?: string
+  postalCode: string
+  representativeName?: string
+  representativePosition?: string
   status: string
   updateDate: string
 }
@@ -18,4 +31,6 @@ export class GbizinfoClient {
 
   findByCorporateNumber(corporateNumber: string): Promise<Array<Corporation>>
   findByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
+  findByTimeRange(page: number, from: Date, to: Date): Promise<Array<Corporation>>
+  findByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown> 
 }
