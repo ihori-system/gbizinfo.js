@@ -31,6 +31,11 @@ export class GbizinfoClient {
 
   findByCorporateNumber(corporateNumber: string): Promise<Array<Corporation>>
   findByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
-  findByTimeRange(page: number, from: Date, to: Date): Promise<Array<Corporation>>
+  findByTimeRange(page: number, from: Date, to: Date): Promise<{
+    totalCount: number,
+    totalPage: number,
+    pageNumber: number,
+    corporations: Array<Corporation>
+  }>
   findByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown> 
 }
