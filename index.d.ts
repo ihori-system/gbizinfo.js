@@ -8,6 +8,14 @@ export interface Certification {
   title: string
 }
 
+export interface Commendation {
+  category?: string
+  dateOfCommendation?: string
+  governmentDepartments: string
+  target?: string 
+  title: string
+}
+
 export interface Corporation {
   businessItems?: Array<string>
   businessSummary?: string
@@ -15,6 +23,7 @@ export interface Corporation {
   certification?: Array<Certification>
   closeCause?: string
   closeDate?: string
+  commendation?: Array<Commendation>
   companySizeFemale?: number
   companySizeMale?: number
   companyUrl?: string
@@ -39,12 +48,19 @@ export class GbizinfoClient {
   findByCorporateNumber(corporateNumber: string): Promise<Array<Corporation>>
   findByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
   findByTimeRange(page: number, from: Date, to: Date): Promise<{
-    totalCount: number,
-    totalPage: number,
-    pageNumber: number,
+    totalCount: number
+    totalPage: number
+    pageNumber: number
     corporations: Array<Corporation>
   }>
-  findByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown> 
+  findByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
+  findCommendationByTimeRange(page: number, from: Date, to: Date): Promise<{
+    totalCount: number
+    totalPage: number
+    pageNumber: number
+    corporations: Array<Corporation>
+  }>
+  findCommendationByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
 }
 
 export interface GbizinfoClientOption {
