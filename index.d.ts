@@ -1,11 +1,18 @@
-export interface GbizinfoClientOption {
-  token: string
+export interface Certification {
+  category?: string
+  dateOfApproval?: string
+  enterpriseScale?: string
+  expirationDate?: string
+  governmentDepartments: string
+  target?: string
+  title: string
 }
 
 export interface Corporation {
   businessItems?: Array<string>
   businessSummary?: string
   capitalStock?: number
+  certification?: Array<Certification>
   closeCause?: string
   closeDate?: string
   companySizeFemale?: number
@@ -38,4 +45,8 @@ export class GbizinfoClient {
     corporations: Array<Corporation>
   }>
   findByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown> 
+}
+
+export interface GbizinfoClientOption {
+  token: string
 }
