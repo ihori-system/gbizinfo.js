@@ -1,5 +1,5 @@
 const assert = require('assert');
-const {GbizinfoClient} = require('..');
+const {GbizinfoClient} = require('../..');
 
 require('dotenv').config();
 
@@ -58,26 +58,23 @@ const findByTimeRangeRaw = async () => {
     assert.ok(actual['totalPage'] != null);
     assert.ok(actual['pageNumber'] != null);
     actual['hojin-infos'].forEach((d) => {
-      actual['hojin-infos'].forEach((d) => {
-        if (d['corporate_number'] == null || d['name'] == null || d['status'] == null || d['update_date'] == null) {
-          console.log(d);
-        }
-        assert.ok(d['corporate_number'] != null);
-        assert.ok(d['name'] != null);
-        assert.ok(d['status'] != null);
-        assert.ok(d['update_date'] != null);
-        const diff = Object.keys(d).filter((k) => hojinInfosProperties.includes(k) === false);
-        if (diff.length > 0) {
-          console.log(d);
-          console.log(diff);
-        }
-        assert.strictEqual(diff.length, 0);
-      });
+      if (d['corporate_number'] == null || d['name'] == null || d['status'] == null || d['update_date'] == null) {
+        console.log(d);
+      }
+      assert.ok(d['corporate_number'] != null);
+      assert.ok(d['name'] != null);
+      assert.ok(d['status'] != null);
+      assert.ok(d['update_date'] != null);
+      const diff = Object.keys(d).filter((k) => hojinInfosProperties.includes(k) === false);
+      if (diff.length > 0) {
+        console.log(d);
+        console.log(diff);
+      }
+      assert.strictEqual(diff.length, 0);
     });
 
     // date.setFullYear(date.getFullYear() + interval);
     date.setDate(date.getDate() + interval);
   };
 };
-
 findByTimeRangeRaw();
