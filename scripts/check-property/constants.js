@@ -1,0 +1,33 @@
+module.exports.COMMENDATION_PROPERTIES = [
+  'category',
+  'date_of_commendation',
+  'government_departments',
+  'target',
+  'title',
+];
+
+module.exports.HOJIN_INFO_PROPERTIES = [
+  'business_items',
+  'business_summary',
+  'capital_stock',
+  'certification',
+  'close_cause',
+  'close_date',
+  'commendation',
+  'company_size_female',
+  'company_size_male',
+  'company_url',
+  'corporate_number',
+  'date_of_establishment',
+  'employee_number',
+  'founding_year',
+  'kana',
+  'location',
+  'name',
+  'name_en',
+  'postal_code',
+  'representative_name',
+  'representative_position',
+  'status',
+  'update_date',
+];

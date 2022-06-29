@@ -33,3 +33,15 @@ describe('findCertificationByTimeRange', () => {
     expect(actual.corporations[0].certification.length).toEqual(1);
   });
 });
+
+describe('findCommendationByTimeRange', () => {
+  test('find commendation by time range', async () => {
+    const client = new GbizinfoClient({token: process.env.X_HOJININFO_API_TOKEN});
+    const actual = await client.findCommendationByTimeRange(1, new Date('2020-03-27'), new Date('2020-03-27'));
+    expect(actual.totalCount).toEqual(53503);
+    expect(actual.totalPage).toEqual(536);
+    expect(actual.pageNumber).toEqual(1);
+    expect(actual.corporations.length).toEqual(100);
+    expect(actual.corporations[0].commendation.length).toEqual(1);
+  });
+});
