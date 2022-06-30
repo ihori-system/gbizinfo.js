@@ -6,6 +6,13 @@ module.exports.COMMENDATION_PROPERTIES = [
   'title',
 ];
 
+module.exports.FINANCE_PROPERTIES = [
+  'accounting_standards',
+  'fiscal_year_cover_page',
+  'major_shareholders',
+  'management_index',
+];
+
 module.exports.HOJIN_INFO_PROPERTIES = [
   'business_items',
   'business_summary',
@@ -20,6 +27,7 @@ module.exports.HOJIN_INFO_PROPERTIES = [
   'corporate_number',
   'date_of_establishment',
   'employee_number',
+  'finance',
   'founding_year',
   'kana',
   'location',
@@ -30,4 +38,37 @@ module.exports.HOJIN_INFO_PROPERTIES = [
   'representative_position',
   'status',
   'update_date',
+];
+
+module.exports.MAJOR_SHAREHOLDER_PROPERTIES = [
+  'name_major_shareholders',
+  'shareholding_ratio',
+];
+
+module.exports.MANAGEMENT_INDEX_PROPERTIES = [
+  'capital_stock_summary_of_business_results',
+  'capital_stock_summary_of_business_results_unit_ref',
+  'gross_operating_revenue_summary_of_business_results',
+  'gross_operating_revenue_summary_of_business_results_unit_ref',
+  'net_assets_summary_of_business_results',
+  'net_assets_summary_of_business_results_unit_ref',
+  'net_income_loss_summary_of_business_results',
+  'net_income_loss_summary_of_business_results_unit_ref',
+  'net_premiums_written_summary_of_business_results_ins',
+  'net_premiums_written_summary_of_business_results_ins_unit_ref',
+  'net_sales_summary_of_business_results',
+  'net_sales_summary_of_business_results_unit_ref',
+  'number_of_employees',
+  'number_of_employees_unit_ref',
+  'operating_revenue1_summary_of_business_results',
+  'operating_revenue1_summary_of_business_results_unit_ref',
+  'operating_revenue2_summary_of_business_results',
+  'operating_revenue2_summary_of_business_results_unit_ref',
+  'ordinary_income_loss_summary_of_business_results',
+  'ordinary_income_loss_summary_of_business_results_unit_ref',
+  'ordinary_income_summary_of_business_results',
+  'ordinary_income_summary_of_business_results_unit_ref',
+  'period',
+  'total_assets_summary_of_business_results',
+  'total_assets_summary_of_business_results_unit_ref',
 ];
