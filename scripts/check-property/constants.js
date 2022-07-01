@@ -41,6 +41,7 @@ module.exports.CORPORATION_PROPERTIES = [
   'representative_name',
   'representative_position',
   'status',
+  'subsidy',
   'update_date',
 ];
 
@@ -89,5 +90,16 @@ module.exports.PROCUREMENT_PROPERTIES = [
   'date_of_order',
   'government_departments',
   'joint_signatures',
+  'title',
+];
+
+module.exports.SUBSIDY_PROPERTIES = [
+  'amount',
+  'date_of_approval',
+  'government_departments',
+  'joint_signatures',
+  'note',
+  'subsidy_resource',
+  'target',
   'title',
 ];
