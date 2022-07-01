@@ -1,3 +1,6 @@
+/**
+ * interfaces
+ */
 export interface Certification {
   category?: string
   dateOfApproval?: string
@@ -42,6 +45,49 @@ export interface Corporation {
   updateDate: string
 }
 
+export interface Finance {
+  accountingStandards: string
+  fiscalYearCoverPage: string
+  majorShareholders: Array<MajorShareholder>
+  managementIndex: Array<ManagementIndex>
+}
+
+export interface MajorShareholder {
+  nameMajorShareholders: string
+  shareholdingRatio: number
+}
+
+export interface ManagementIndex {
+  capitalStockSummaryOfBusinessResults: number
+  capitalStockSummaryOfBusinessResultsUnitRef: string
+  grossOperatingRevenueSummaryOfBusinessResults?: number
+  grossOperatingRevenueSummaryOfBusinessResultsUnitRef?: string
+  netAssetSummaryOfBusinessResults: number
+  netAssetsSummaryOfBusinessResultsUnitRef: string
+  netIncomeLossSummaryOfBusinessResults: number
+  netIncomeLossSummaryOfBusinessResultsUnitRef: string
+  netPremiumsWrittenSummaryOfBusinessResultsIns?: number
+  netPremiumsWrittenSummaryOfBusinessResultsInsUnitRef?: string
+  netSalesSummaryOfBusinessResults?: number
+  netSalesSummaryOfBusinessResultsUnitRef?: string
+  numberOfEmployees?: number
+  numberOfEmployeesUnitRef?: string
+  operatingRevenue1SummaryOfBusinessResults?: number
+  operatingRevenue1SummaryOfBusinessResultsUnitRef?: string
+  operatingRevenue2SummaryOfBusinessResults?: number
+  operatingRevenue2SummaryOfBusinessResultsUnitRef?: string
+  ordinaryIncomeLossSummaryOfBusinessResults: number
+  ordinaryIncomeLossSummaryOfBusinessResultsUnitRef: string
+  ordinaryIncomeSummaryOfBusinessResults?: number
+  ordinaryIncomeSummaryOfBusinessResultsUnitRef?: string
+  period: string
+  totalAssetsSummaryOfBusinessResults: number
+  totalAssetsSummaryOfBusinessResultsUnitRef: string
+}
+
+/**
+ * classes
+ */
 export class GbizinfoClient {
   constructor(options: GbizinfoClientOption)
 

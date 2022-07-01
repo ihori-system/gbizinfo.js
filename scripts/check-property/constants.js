@@ -1,3 +1,13 @@
+module.exports.CERTIFICATION_PROPERTIES = [
+  'category',
+  'date_of_approval',
+  'enterprise_scale',
+  'expiration_date',
+  'government_departments',
+  'target',
+  'title',
+];
+
 module.exports.COMMENDATION_PROPERTIES = [
   'category',
   'date_of_commendation',

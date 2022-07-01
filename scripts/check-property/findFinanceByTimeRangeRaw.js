@@ -116,4 +116,5 @@ const main = async () => {
     date.setDate(date.getDate() + interval);
   };
 };
+
 main();
