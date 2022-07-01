@@ -1,6 +1,9 @@
 const assert = require('assert');
 const {GbizinfoClient} = require('../..');
-const {COMMENDATION_PROPERTIES, HOJIN_INFO_PROPERTIES} = require('./constants');
+const {
+  COMMENDATION_PROPERTIES,
+  HOJIN_INFO_PROPERTIES,
+} = require('./constants');
 const {sleep} = require('./utils');
 
 require('dotenv').config();
@@ -59,4 +62,5 @@ const main = async () => {
     date.setDate(date.getDate() + interval);
   };
 };
+
 main();
