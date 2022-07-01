@@ -16,14 +16,7 @@ module.exports.COMMENDATION_PROPERTIES = [
   'title',
 ];
 
-module.exports.FINANCE_PROPERTIES = [
-  'accounting_standards',
-  'fiscal_year_cover_page',
-  'major_shareholders',
-  'management_index',
-];
-
-module.exports.HOJIN_INFO_PROPERTIES = [
+module.exports.CORPORATION_PROPERTIES = [
   'business_items',
   'business_summary',
   'capital_stock',
@@ -44,10 +37,18 @@ module.exports.HOJIN_INFO_PROPERTIES = [
   'name',
   'name_en',
   'postal_code',
+  'procurement',
   'representative_name',
   'representative_position',
   'status',
   'update_date',
+];
+
+module.exports.FINANCE_PROPERTIES = [
+  'accounting_standards',
+  'fiscal_year_cover_page',
+  'major_shareholders',
+  'management_index',
 ];
 
 module.exports.MAJOR_SHAREHOLDER_PROPERTIES = [
@@ -81,4 +82,12 @@ module.exports.MANAGEMENT_INDEX_PROPERTIES = [
   'period',
   'total_assets_summary_of_business_results',
   'total_assets_summary_of_business_results_unit_ref',
+];
+
+module.exports.PROCUREMENT_PROPERTIES = [
+  'amount',
+  'date_of_order',
+  'government_departments',
+  'joint_signatures',
+  'title',
 ];

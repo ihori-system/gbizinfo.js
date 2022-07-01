@@ -27,6 +27,8 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>const {request} = require('undici');
+const {convertToCorporate} = require('./converters');
+const {formatYYYYMMDD} = require('./utils');
 
 const PACKAGE_NAME = '@ihori-system/gbizinfo';
 const API_ENDPOINT = 'https://info.gbiz.go.jp/hojin';
@@ -35,37 +37,6 @@ const API_ENDPOINT = 'https://info.gbiz.go.jp/hojin';
  * @typedef {Object} GbizinfoClientOption
  * @property {string} token APIトークン
  */
-
-/**
- * @param {unknown} data
- * @return {Corporation} 法人基本情報
- */
-function convertToCorporate(data) {
-  return {
-    businessItems: data['business_items'],
-    businessSummary: data['business_summary'],
-    capitalStock: data['capital_stock'],
-    closeCause: data['close_cause'],
-    closeDate: data['close_date'],
-    companySizeFemale: data['company_size_female'],
-    companySizeMale: data['company_size_male'],
-    companyUrl: data['company_url'],
-    corporateNumber: data['corporate_number'],
-    dateOfEstablishment: data['date_of_establishment'],
-    employeeNumber: data['employee_number'],
-    foundingYear: data['founding_year'],
-    kana: data['kana'],
-    location: data['location'],
-    name: data['name'],
-    nameEn: data['name_en'],
-    postalCode: data['postal_code'],
-    representativeName: data['representative_name'],
-    representativePosition: data['representative_position'],
-    status: data['status'],
-    updateDate: data['update_date'],
-  };
-}
-
 
 /**
  * GbizinfoClient
@@ -147,18 +118,237 @@ class GbizinfoClient {
   }
 
   /**
-   *
    * @param {number} page
    * @param {Date} from
    * @param {Date} to
    * @return {unknown} レスポンスボディ
    */
   findByTimeRangeRaw(page, from, to) {
-    const formatYYYYMMDD = (d) => {
-      const padTo2Digits = (n) => n.toString().padStart(2, '0');
-      return `${d.getFullYear()}${padTo2Digits(d.getMonth() + 1)}${padTo2Digits(d.getDate())}`;
-    };
     return request(`${API_ENDPOINT}/v1/hojin/updateInfo`, {
+      headers: this.defaultHeaders,
+      query: {
+        page,
+        from: formatYYYYMMDD(from),
+        to: formatYYYYMMDD(to),
+      },
+    })
+        .then(({body}) => body.json());
+  }
+
+  /**
+   * {@link https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API_(Period-specified_Search)/getCertificationUpdateInfoUsingGET|APIドキュメント}
+   * @param {number} page
+   * @param {Date} from
+   * @param {Date} to
+   * @return {Promise&lt;Object>} 届出・認定情報
+   */
+  findCertificationByTimeRange(page, from, to) {
+    if (page == null) {
+      throw new TypeError(`[${PACKAGE_NAME}] page引数が指定されていません`);
+    }
+    if (typeof page !== 'number') {
+      throw new TypeError(`[${PACKAGE_NAME}] pageに数値以外の値が入っています`);
+    }
+    if (from == null) {
+      throw new TypeError(`[${PACKAGE_NAME}] from引数が指定されていません`);
+    }
+    if (from instanceof Date === false) {
+      throw new TypeError(`[${PACKAGE_NAME}] fromがDateオブジェクトではありません`);
+    }
+    if (to == null) {
+      throw new TypeError(`[${PACKAGE_NAME}] to引数が指定されていません`);
+    }
+    if (to instanceof Date === false) {
+      throw new TypeError(`[${PACKAGE_NAME}] toがDateオブジェクトではありません`);
+    }
+    return this.findCertificationByTimeRangeRaw(page, from, to)
+        .then((data) => {
+          const corporations = data['hojin-infos'];
+          return {
+            totalCount: Number(data['totalCount']),
+            totalPage: Number(data['totalPage']),
+            pageNumber: Number(data['pageNumber']),
+            corporations: corporations.map(convertToCorporate),
+          };
+        });
+  }
+
+  /**
+   * @param {number} page
+   * @param {Date} from
+   * @param {Date} to
+   * @return {unknown} レスポンスボディ
+   */
+  findCertificationByTimeRangeRaw(page, from, to) {
+    return request(`${API_ENDPOINT}/v1/hojin/updateInfo/certification`, {
+      headers: this.defaultHeaders,
+      query: {
+        page,
+        from: formatYYYYMMDD(from),
+        to: formatYYYYMMDD(to),
+      },
+    })
+        .then(({body}) => body.json());
+  }
+
+  /**
+   * {@link https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API_(Period-specified_Search)/getCommendationUpdateInfoUsingGET|APIドキュメント}
+   * @param {number} page
+   * @param {Date} from
+   * @param {Date} to
+   * @return {Promise&lt;Object>} 表彰情報
+   */
+  findCommendationByTimeRange(page, from, to) {
+    if (page == null) {
+      throw new TypeError(`[${PACKAGE_NAME}] page引数が指定されていません`);
+    }
+    if (typeof page !== 'number') {
+      throw new TypeError(`[${PACKAGE_NAME}] pageに数値以外の値が入っています`);
+    }
+    if (from == null) {
+      throw new TypeError(`[${PACKAGE_NAME}] from引数が指定されていません`);
+    }
+    if (from instanceof Date === false) {
+      throw new TypeError(`[${PACKAGE_NAME}] fromがDateオブジェクトではありません`);
+    }
+    if (to == null) {
+      throw new TypeError(`[${PACKAGE_NAME}] to引数が指定されていません`);
+    }
+    if (to instanceof Date === false) {
+      throw new TypeError(`[${PACKAGE_NAME}] toがDateオブジェクトではありません`);
+    }
+    return this.findCommendationByTimeRangeRaw(page, from, to)
+        .then((data) => {
+          const corporations = data['hojin-infos'];
+          return {
+            totalCount: Number(data['totalCount']),
+            totalPage: Number(data['totalPage']),
+            pageNumber: Number(data['pageNumber']),
+            corporations: corporations.map(convertToCorporate),
+          };
+        });
+  }
+
+  /**
+   * @param {number} page
+   * @param {Date} from
+   * @param {Date} to
+   * @return {unknown} レスポンスボディ
+   */
+  findCommendationByTimeRangeRaw(page, from, to) {
+    return request(`${API_ENDPOINT}/v1/hojin/updateInfo/commendation`, {
+      headers: this.defaultHeaders,
+      query: {
+        page,
+        from: formatYYYYMMDD(from),
+        to: formatYYYYMMDD(to),
+      },
+    })
+        .then(({body}) => body.json());
+  }
+
+  /**
+   * {@link https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API_(Period-specified_Search)/getFinanceUpdateInfoUsingGET|APIドキュメント}
+   * @param {number} page
+   * @param {Date} from
+   * @param {Date} to
+   * @return {Promise&lt;Object>} 財務情報
+   */
+  findFinanceByTimeRange(page, from, to) {
+    if (page == null) {
+      throw new TypeError(`[${PACKAGE_NAME}] page引数が指定されていません`);
+    }
+    if (typeof page !== 'number') {
+      throw new TypeError(`[${PACKAGE_NAME}] pageに数値以外の値が入っています`);
+    }
+    if (from == null) {
+      throw new TypeError(`[${PACKAGE_NAME}] from引数が指定されていません`);
+    }
+    if (from instanceof Date === false) {
+      throw new TypeError(`[${PACKAGE_NAME}] fromがDateオブジェクトではありません`);
+    }
+    if (to == null) {
+      throw new TypeError(`[${PACKAGE_NAME}] to引数が指定されていません`);
+    }
+    if (to instanceof Date === false) {
+      throw new TypeError(`[${PACKAGE_NAME}] toがDateオブジェクトではありません`);
+    }
+    return this.findFinanceByTimeRangeRaw(page, from, to)
+        .then((data) => {
+          const corporations = data['hojin-infos'];
+          return {
+            totalCount: Number(data['totalCount']),
+            totalPage: Number(data['totalPage']),
+            pageNumber: Number(data['pageNumber']),
+            corporations: corporations.map(convertToCorporate),
+          };
+        });
+  }
+
+  /**
+   * @param {number} page
+   * @param {Date} from
+   * @param {Date} to
+   * @return {unknown} レスポンスボディ
+   */
+  findFinanceByTimeRangeRaw(page, from, to) {
+    return request(`${API_ENDPOINT}/v1/hojin/updateInfo/finance`, {
+      headers: this.defaultHeaders,
+      query: {
+        page,
+        from: formatYYYYMMDD(from),
+        to: formatYYYYMMDD(to),
+      },
+    })
+        .then(({body}) => body.json());
+  }
+
+  /**
+   * {@link https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API_(Period-specified_Search)/getProcurementUpdateInfoUsingGET|APIドキュメント}
+   * @param {number} page
+   * @param {Date} from
+   * @param {Date} to
+   * @return {Promise&lt;Object>} 調達情報
+   */
+  findProcurementByTimeRange(page, from, to) {
+    if (page == null) {
+      throw new TypeError(`[${PACKAGE_NAME}] page引数が指定されていません`);
+    }
+    if (typeof page !== 'number') {
+      throw new TypeError(`[${PACKAGE_NAME}] pageに数値以外の値が入っています`);
+    }
+    if (from == null) {
+      throw new TypeError(`[${PACKAGE_NAME}] from引数が指定されていません`);
+    }
+    if (from instanceof Date === false) {
+      throw new TypeError(`[${PACKAGE_NAME}] fromがDateオブジェクトではありません`);
+    }
+    if (to == null) {
+      throw new TypeError(`[${PACKAGE_NAME}] to引数が指定されていません`);
+    }
+    if (to instanceof Date === false) {
+      throw new TypeError(`[${PACKAGE_NAME}] toがDateオブジェクトではありません`);
+    }
+    return this.findProcurementByTimeRangeRaw(page, from, to)
+        .then((data) => {
+          const corporations = data['hojin-infos'];
+          return {
+            totalCount: Number(data['totalCount']),
+            totalPage: Number(data['totalPage']),
+            pageNumber: Number(data['pageNumber']),
+            corporations: corporations.map(convertToCorporate),
+          };
+        });
+  }
+
+  /**
+   * @param {number} page
+   * @param {Date} from
+   * @param {Date} to
+   * @return {unknown} レスポンスボディ
+   */
+  findProcurementByTimeRangeRaw(page, from, to) {
+    return request(`${API_ENDPOINT}/v1/hojin/updateInfo/procurement`, {
       headers: this.defaultHeaders,
       query: {
         page,
@@ -181,13 +371,13 @@ module.exports.GbizinfoClient = GbizinfoClient;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="GbizinfoClient.html">GbizinfoClient</a></li></ul><h3>Global</h3><ul><li><a href="global.html#convertToCorporate">convertToCorporate</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="GbizinfoClient.html">GbizinfoClient</a></li></ul><h3><a href="global.html">Global</a></h3>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Tue Jun 28 2022 17:06:33 GMT+0900 (Japan Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Fri Jul 01 2022 14:08:56 GMT+0900 (Japan Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

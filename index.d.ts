@@ -33,12 +33,14 @@ export interface Corporation {
   corporateNumber: string
   dateOfEstablishment?: string
   employeeNumber?: number
+  finance?: Finance
   foundingYear?: number
   kana?: string
   location?: string
   name: string
   nameEn?: string
   postalCode?: string
+  procurement?: Array<Procurement>
   representativeName?: string
   representativePosition?: string
   status: string
@@ -83,6 +85,14 @@ export interface ManagementIndex {
   period: string
   totalAssetsSummaryOfBusinessResults: number
   totalAssetsSummaryOfBusinessResultsUnitRef: string
+}
+
+export interface Procurement {
+  amount: number
+  dateOfOrder?: string
+  governmentDepartments: string
+  jointSignatures?: Array<string>
+  title: string
 }
 
 /**
