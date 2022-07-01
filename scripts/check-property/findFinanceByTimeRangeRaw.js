@@ -2,7 +2,7 @@ const assert = require('assert');
 const {GbizinfoClient} = require('../..');
 const {
   FINANCE_PROPERTIES,
-  HOJIN_INFO_PROPERTIES,
+  CORPORATION_PROPERTIES,
   MAJOR_SHAREHOLDER_PROPERTIES,
   MANAGEMENT_INDEX_PROPERTIES,
 } = require('./constants');
@@ -39,7 +39,7 @@ const main = async () => {
       assert.ok(d['name'] != null);
       assert.ok(d['status'] != null);
       assert.ok(d['update_date'] != null);
-      const diff = Object.keys(d).filter((k) => HOJIN_INFO_PROPERTIES.includes(k) === false);
+      const diff = Object.keys(d).filter((k) => CORPORATION_PROPERTIES.includes(k) === false);
       if (diff.length > 0) {
         console.log(d);
         console.log(diff);

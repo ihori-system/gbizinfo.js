@@ -58,3 +58,15 @@ describe('findFinanceByTimeRange', () => {
     expect(actual.corporations[0].finance.managementIndex.length).toEqual(5);
   });
 });
+
+describe('findProcurementByTimeRange', () => {
+  test('find procurement by time range', async () => {
+    const client = new GbizinfoClient({token: process.env.X_HOJININFO_API_TOKEN});
+    const actual = await client.findProcurementByTimeRange(1, new Date('2020-11-27'), new Date('2020-11-27'));
+    expect(actual.totalCount).toEqual(73);
+    expect(actual.totalPage).toEqual(1);
+    expect(actual.pageNumber).toEqual(1);
+    expect(actual.corporations.length).toEqual(60);
+    expect(actual.corporations[0].procurement.length).toEqual(1);
+  });
+});
