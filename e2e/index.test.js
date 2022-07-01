@@ -70,3 +70,15 @@ describe('findProcurementByTimeRange', () => {
     expect(actual.corporations[0].procurement.length).toEqual(1);
   });
 });
+
+describe('findSubsidyByTimeRange', () => {
+  test('find subsidy by time range', async () => {
+    const client = new GbizinfoClient({token: process.env.X_HOJININFO_API_TOKEN});
+    const actual = await client.findSubsidyByTimeRange(1, new Date('2021-04-27'), new Date('2021-04-27'));
+    expect(actual.totalCount).toEqual(41498);
+    expect(actual.totalPage).toEqual(415);
+    expect(actual.pageNumber).toEqual(1);
+    expect(actual.corporations.length).toEqual(100);
+    expect(actual.corporations[0].subsidy.length).toEqual(1);
+  });
+});
