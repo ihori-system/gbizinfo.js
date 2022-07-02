@@ -271,6 +271,55 @@ describe('findSubsidyByCorporateNumber', () => {
   });
 });
 
+describe('findWorkplaceByCorporateNumber', () => {
+  test('find workplace by corporate number', async () => {
+    undici.request.mockReturnValue(Promise.resolve({
+      body: {
+        json: () => {
+          return Promise.resolve({
+            'hojin-infos': [
+              {
+                'corporate_number': 'string',
+                'name': 'string',
+                'status': 'string',
+                'update_date': '2021-09-02T00:00:00+09:00',
+                'workplace_info': {
+                  'base_infos': {
+                    'average_age': 0,
+                    'average_continuous_service_years': 0,
+                    'average_continuous_service_years_Female': 0,
+                    'average_continuous_service_years_Male': 0,
+                    'average_continuous_service_years_type': 'string',
+                    'month_average_predetermined_overtime_hours': 0,
+                  },
+                  'compatibility_of_childcare_and_work': {
+                    'maternity_leave_acquisition_num': 0,
+                    'number_of_maternity_leave': 0,
+                    'number_of_paternity_leave': 0,
+                    'paternity_leave_acquisition_num': 0,
+                  },
+                  'women_activity_infos': {
+                    'female_share_of_manager': 0,
+                    'female_share_of_officers': 0,
+                    'female_workers_proportion': 0,
+                    'female_workers_proportion_type': 'string',
+                    'gender_total_of_manager': 0,
+                    'gender_total_of_officers': 0,
+                  },
+                },
+              },
+            ],
+          });
+        },
+      },
+    }));
+    const client = new GbizinfoClient({token: 'xxxxx'});
+    const actual = await client.findWorkplaceByCorporateNumber(1, new Date(), new Date());
+    expect(actual[0].corporateNumber).toEqual('string');
+    expect(actual[0].workplace).toBeDefined();
+  });
+});
+
 describe('findByTimeRange', () => {
   test('find by time range', async () => {
     undici.request.mockReturnValue(Promise.resolve({
