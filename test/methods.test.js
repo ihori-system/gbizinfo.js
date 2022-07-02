@@ -429,6 +429,136 @@ describe('findFinanceByTimeRange', () => {
   });
 });
 
+describe('findPatentByTimeRange', () => {
+  test('throws without argument `page`', async () => {
+    undici.request.mockReturnValue(Promise.resolve({}));
+    const client = new GbizinfoClient({token: 'xxxxx'});
+    expect(() => client.findPatentByTimeRange()).toThrow();
+  });
+
+  test('throws when `page` is not number', async () => {
+    undici.request.mockReturnValue(Promise.resolve({}));
+    const client = new GbizinfoClient({token: 'xxxxx'});
+    expect(() => client.findPatentByTimeRange('1')).toThrow();
+  });
+
+  test('throws without argument `from`', async () => {
+    undici.request.mockReturnValue(Promise.resolve({}));
+    const client = new GbizinfoClient({token: 'xxxxx'});
+    expect(() => client.findPatentByTimeRange(1)).toThrow();
+  });
+
+  test('throws when `from` is not Date', async () => {
+    undici.request.mockReturnValue(Promise.resolve({}));
+    const client = new GbizinfoClient({token: 'xxxxx'});
+    expect(() => client.findPatentByTimeRange(1, '2021-04-01')).toThrow();
+  });
+
+  test('throws without argument `to`', async () => {
+    undici.request.mockReturnValue(Promise.resolve({}));
+    const client = new GbizinfoClient({token: 'xxxxx'});
+    expect(() => client.findPatentByTimeRange(1, new Date(2021, 3, 1))).toThrow();
+  });
+
+  test('throws when `to` is not Date', async () => {
+    undici.request.mockReturnValue(Promise.resolve({}));
+    const client = new GbizinfoClient({token: 'xxxxx'});
+    expect(() => client.findPatentByTimeRange(1, new Date(2021, 3, 1), '2021-04-01')).toThrow();
+  });
+
+  test('find patent by time range with classifications', async () => {
+    undici.request.mockReturnValue(Promise.resolve({
+      body: {
+        json: () => {
+          return Promise.resolve({
+            'id': null,
+            'errors': null,
+            'message': '200 - OK.',
+            'totalCount': '12345',
+            'totalPage': '12345',
+            'pageNumber': '12345',
+            'hojin-infos': [
+              {
+                'corporate_number': '8000012010038',
+                'kana': 'でじたるちょう',
+                'location': '東京都千代田区紀尾井町１番３号東京ガーデンテラス紀尾井町',
+                'name': 'デジタル庁',
+                'name_en': 'Digital Agency',
+                'postal_code': '1020094',
+                'status': '-',
+                'update_date': '2021-09-02T00:00:00+09:00',
+                'patent': [
+                  {
+                    'application_date': 'string',
+                    'application_number': 'string',
+                    'classifications': [
+                      {},
+                    ],
+                    'patent_type': 'string',
+                    'title': 'string',
+                  },
+                ],
+              },
+            ],
+          });
+        },
+      },
+    }));
+    const client = new GbizinfoClient({token: 'xxxxx'});
+    const actual = await client.findPatentByTimeRange(1, new Date(), new Date());
+    expect(actual.totalCount).toEqual(12345);
+    expect(actual.totalPage).toEqual(12345);
+    expect(actual.pageNumber).toEqual(12345);
+    expect(actual.corporations[0].corporateNumber).toEqual('8000012010038');
+    expect(actual.corporations[0].patent.length).toEqual(1);
+    expect(actual.corporations[0].patent[0].classifications.length).toEqual(1);
+  });
+
+  test('find patent by time range without classifications', async () => {
+    undici.request.mockReturnValue(Promise.resolve({
+      body: {
+        json: () => {
+          return Promise.resolve({
+            'id': null,
+            'errors': null,
+            'message': '200 - OK.',
+            'totalCount': '12345',
+            'totalPage': '12345',
+            'pageNumber': '12345',
+            'hojin-infos': [
+              {
+                'corporate_number': '8000012010038',
+                'kana': 'でじたるちょう',
+                'location': '東京都千代田区紀尾井町１番３号東京ガーデンテラス紀尾井町',
+                'name': 'デジタル庁',
+                'name_en': 'Digital Agency',
+                'postal_code': '1020094',
+                'status': '-',
+                'update_date': '2021-09-02T00:00:00+09:00',
+                'patent': [
+                  {
+                    'application_date': 'string',
+                    'application_number': 'string',
+                    'patent_type': 'string',
+                    'title': 'string',
+                  },
+                ],
+              },
+            ],
+          });
+        },
+      },
+    }));
+    const client = new GbizinfoClient({token: 'xxxxx'});
+    const actual = await client.findPatentByTimeRange(1, new Date(), new Date());
+    expect(actual.totalCount).toEqual(12345);
+    expect(actual.totalPage).toEqual(12345);
+    expect(actual.pageNumber).toEqual(12345);
+    expect(actual.corporations[0].corporateNumber).toEqual('8000012010038');
+    expect(actual.corporations[0].patent.length).toEqual(1);
+  });
+});
+
 describe('findProcurementByTimeRange', () => {
   test('throws without argument `page`', async () => {
     undici.request.mockReturnValue(Promise.resolve({}));

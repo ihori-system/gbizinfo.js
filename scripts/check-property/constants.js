@@ -36,6 +36,7 @@ module.exports.CORPORATION_PROPERTIES = [
   'location',
   'name',
   'name_en',
+  'patent',
   'postal_code',
   'procurement',
   'representative_name',
@@ -84,6 +85,20 @@ module.exports.MANAGEMENT_INDEX_PROPERTIES = [
   'period',
   'total_assets_summary_of_business_results',
   'total_assets_summary_of_business_results_unit_ref',
+];
+
+module.exports.PATENT_PROPERTIES = [
+  'application_date',
+  'application_number',
+  'classifications',
+  'patent_type',
+  'title',
+];
+
+module.exports.PATENT_CLASSIFICATION_PROPERTIES = [
+  'コード名',
+  'コード値',
+  '日本語',
 ];
 
 module.exports.PROCUREMENT_PROPERTIES = [

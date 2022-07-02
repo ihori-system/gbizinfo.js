@@ -88,6 +88,20 @@ export interface ManagementIndex {
   totalAssetsSummaryOfBusinessResultsUnitRef: string
 }
 
+export interface Patent {
+  applicationDate: string
+  applicationNumber: string
+  classifications: Array<PatentClassification>
+  patentType: string
+  title: string
+}
+
+export interface PatentClassification {
+  name: string
+  value: string
+  japanese?: string
+}
+
 export interface Procurement {
   amount: number
   dateOfOrder?: string
