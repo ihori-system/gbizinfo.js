@@ -64,6 +64,40 @@ describe('findCertificationByCorporateNumber', () => {
   });
 });
 
+describe('findCommendationByCorporateNumber', () => {
+  test('find commendation by corporate number', async () => {
+    undici.request.mockReturnValue(Promise.resolve({
+      body: {
+        json: () => {
+          return Promise.resolve({
+            'hojin-infos': [
+              {
+                'commendation': [
+                  {
+                    'date_of_commendation': null,
+                    'title': 'hello',
+                    'target': null,
+                    'category': null,
+                    'government_departments': '厚生労働省',
+                  },
+                ],
+                'corporate_number': 'string',
+                'name': 'string',
+                'status': 'string',
+                'update_date': '2021-09-02T00:00:00+09:00',
+              },
+            ],
+          });
+        },
+      },
+    }));
+    const client = new GbizinfoClient({token: 'xxxxx'});
+    const actual = await client.findCommendationByCorporateNumber(1, new Date(), new Date());
+    expect(actual[0].corporateNumber).toEqual('string');
+    expect(actual[0].commendation.length).toEqual(1);
+  });
+});
+
 describe('findByTimeRange', () => {
   test('find by time range', async () => {
     undici.request.mockReturnValue(Promise.resolve({
