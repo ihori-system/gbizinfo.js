@@ -167,13 +167,25 @@ export class GbizinfoClient {
     corporations: Array<Corporation>
   }>
   findByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
+  findCertificationByTimeRange(page: number, from: Date, to: Date): Promise<Corporation>
+  findCertificationByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
   findCommendationByTimeRange(page: number, from: Date, to: Date): Promise<{
     totalCount: number
     totalPage: number
     pageNumber: number
     corporations: Array<Corporation>
   }>
-  findCommendationByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
+  findCommendationByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>  
+  findFinanceByTimeRange(page: number, from: Date, to: Date): Promise<Corporation>
+  findFinanceByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
+  findPatentByTimeRange(page: number, from: Date, to: Date): Promise<Corporation>
+  findPatentByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
+  findProcurementByTimeRange(page: number, from: Date, to: Date): Promise<Corporation>
+  findProcurementByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
+  findSubsidyByTimeRange(page: number, from: Date, to: Date): Promise<Corporation>
+  findSubsidyByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
+  findWorkplaceByTimeRange(page: number, from: Date, to: Date): Promise<Corporation>
+  findWorkplaceByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
 }
 
 export interface GbizinfoClientOption {
