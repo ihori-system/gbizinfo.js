@@ -164,6 +164,8 @@ export class GbizinfoClient {
   findCertificationByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
   findCommendationByCorporateNumber(corporateNumber: string): Promise<Array<Corporation>>
   findCommendationByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
+  findFinanceByCorporateNumber(corporateNumber: string): Promise<Array<Corporation>>
+  findFinanceByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
   findByTimeRange(page: number, from: Date, to: Date): Promise<{
     totalCount: number
     totalPage: number
@@ -171,7 +173,12 @@ export class GbizinfoClient {
     corporations: Array<Corporation>
   }>
   findByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
-  findCertificationByTimeRange(page: number, from: Date, to: Date): Promise<Corporation>
+  findCertificationByTimeRange(page: number, from: Date, to: Date): Promise<{
+    totalCount: number
+    totalPage: number
+    pageNumber: number
+    corporations: Array<Corporation>
+  }>
   findCertificationByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
   findCommendationByTimeRange(page: number, from: Date, to: Date): Promise<{
     totalCount: number
@@ -180,15 +187,40 @@ export class GbizinfoClient {
     corporations: Array<Corporation>
   }>
   findCommendationByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>  
-  findFinanceByTimeRange(page: number, from: Date, to: Date): Promise<Corporation>
+  findFinanceByTimeRange(page: number, from: Date, to: Date): Promise<{
+    totalCount: number
+    totalPage: number
+    pageNumber: number
+    corporations: Array<Corporation>
+  }>
   findFinanceByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
-  findPatentByTimeRange(page: number, from: Date, to: Date): Promise<Corporation>
+  findPatentByTimeRange(page: number, from: Date, to: Date): Promise<{
+    totalCount: number
+    totalPage: number
+    pageNumber: number
+    corporations: Array<Corporation>
+  }>
   findPatentByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
-  findProcurementByTimeRange(page: number, from: Date, to: Date): Promise<Corporation>
+  findProcurementByTimeRange(page: number, from: Date, to: Date): Promise<{
+    totalCount: number
+    totalPage: number
+    pageNumber: number
+    corporations: Array<Corporation>
+  }>
   findProcurementByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
-  findSubsidyByTimeRange(page: number, from: Date, to: Date): Promise<Corporation>
+  findSubsidyByTimeRange(page: number, from: Date, to: Date): Promise<{
+    totalCount: number
+    totalPage: number
+    pageNumber: number
+    corporations: Array<Corporation>
+  }>
   findSubsidyByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
-  findWorkplaceByTimeRange(page: number, from: Date, to: Date): Promise<Corporation>
+  findWorkplaceByTimeRange(page: number, from: Date, to: Date): Promise<{
+    totalCount: number
+    totalPage: number
+    pageNumber: number
+    corporations: Array<Corporation>
+  }>
   findWorkplaceByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
 }
 
