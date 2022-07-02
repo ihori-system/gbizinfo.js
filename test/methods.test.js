@@ -200,6 +200,40 @@ describe('findPatentByCorporateNumber', () => {
   });
 });
 
+describe('findProcurementByCorporateNumber', () => {
+  test('find procurement by corporate number', async () => {
+    undici.request.mockReturnValue(Promise.resolve({
+      body: {
+        json: () => {
+          return Promise.resolve({
+            'hojin-infos': [
+              {
+                'corporate_number': 'string',
+                'name': 'string',
+                'procurement': [
+                  {
+                    'date_of_order': '2017-04-03T00:00:00+09:00',
+                    'title': 'aaa',
+                    'amount': 1686350,
+                    'government_departments': '厚生労働省',
+                    'joint_signatures': null,
+                  },
+                ],
+                'status': 'string',
+                'update_date': '2021-09-02T00:00:00+09:00',
+              },
+            ],
+          });
+        },
+      },
+    }));
+    const client = new GbizinfoClient({token: 'xxxxx'});
+    const actual = await client.findProcurementByCorporateNumber(1, new Date(), new Date());
+    expect(actual[0].corporateNumber).toEqual('string');
+    expect(actual[0].procurement.length).toEqual(1);
+  });
+});
+
 describe('findByTimeRange', () => {
   test('find by time range', async () => {
     undici.request.mockReturnValue(Promise.resolve({
