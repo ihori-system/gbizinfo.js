@@ -170,6 +170,8 @@ export class GbizinfoClient {
   findPatentByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
   findProcurementByCorporateNumber(corporateNumber: string): Promise<Array<Corporation>>
   findProcurementByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
+  findSubsidyByCorporateNumber(corporateNumber: string): Promise<Array<Corporation>>
+  findSubsidyByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
   findByTimeRange(page: number, from: Date, to: Date): Promise<{
     totalCount: number
     totalPage: number

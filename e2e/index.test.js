@@ -61,6 +61,16 @@ describe('findProcurementByCorporateNumber', () => {
   });
 });
 
+describe('findSubsidyByCorporateNumber', () => {
+  test('find subsidy by corporate number', async () => {
+    const client = new GbizinfoClient({token: process.env.X_HOJININFO_API_TOKEN});
+    const actual = await client.findSubsidyByCorporateNumber('8000012010038'); // デジタル庁
+    expect(actual.length).toEqual(1);
+    expect(actual[0].corporateNumber).toEqual('8000012010038');
+    expect(actual[0].subsidy).toBeDefined();
+  });
+});
+
 describe('findByTimeRange', () => {
   test('find by time range', async () => {
     const client = new GbizinfoClient({token: process.env.X_HOJININFO_API_TOKEN});
