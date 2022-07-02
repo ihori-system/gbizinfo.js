@@ -9,18 +9,11 @@ describe('findByCorporateNumber', () => {
       body: {
         json: () => {
           return Promise.resolve({
-            'id': '8000012010038',
-            'errors': null,
-            'message': '200 - OK.',
             'hojin-infos': [
               {
-                'corporate_number': '8000012010038',
-                'postal_code': '1020094',
-                'location': '東京都千代田区紀尾井町１番３号東京ガーデンテラス紀尾井町',
-                'name': 'デジタル庁',
-                'kana': 'でじたるちょう',
-                'name_en': 'Digital Agency',
-                'status': '-',
+                'corporate_number': 'string',
+                'name': 'string',
+                'status': 'string',
                 'update_date': '2021-09-02T00:00:00+09:00',
               },
             ],
@@ -29,9 +22,9 @@ describe('findByCorporateNumber', () => {
       },
     }));
     const client = new GbizinfoClient({token: 'xxxxx'});
-    const actual = await client.findByCorporateNumber('8000012010038');
+    const actual = await client.findByCorporateNumber('');
     expect(actual.length).toEqual(1);
-    expect(actual[0].corporateNumber).toEqual('8000012010038');
+    expect(actual[0].corporateNumber).toEqual('string');
   });
 });
 
@@ -77,21 +70,14 @@ describe('findByTimeRange', () => {
       body: {
         json: () => {
           return Promise.resolve({
-            'id': null,
-            'errors': null,
-            'message': '200 - OK.',
-            'totalCount': '12345',
-            'totalPage': '12345',
-            'pageNumber': '12345',
+            'totalCount': '11111',
+            'totalPage': '22222',
+            'pageNumber': '33333',
             'hojin-infos': [
               {
-                'corporate_number': '8000012010038',
-                'postal_code': '1020094',
-                'location': '東京都千代田区紀尾井町１番３号東京ガーデンテラス紀尾井町',
-                'name': 'デジタル庁',
-                'kana': 'でじたるちょう',
-                'name_en': 'Digital Agency',
-                'status': '-',
+                'corporate_number': 'string',
+                'name': 'string',
+                'status': 'string',
                 'update_date': '2021-09-02T00:00:00+09:00',
               },
             ],
@@ -101,10 +87,10 @@ describe('findByTimeRange', () => {
     }));
     const client = new GbizinfoClient({token: 'xxxxx'});
     const actual = await client.findByTimeRange(1, new Date(), new Date());
-    expect(actual.totalCount).toEqual(12345);
-    expect(actual.totalPage).toEqual(12345);
-    expect(actual.pageNumber).toEqual(12345);
-    expect(actual.corporations[0].corporateNumber).toEqual('8000012010038');
+    expect(actual.totalCount).toEqual(11111);
+    expect(actual.totalPage).toEqual(22222);
+    expect(actual.pageNumber).toEqual(33333);
+    expect(actual.corporations[0].corporateNumber).toEqual('string');
   });
 });
 
@@ -150,22 +136,11 @@ describe('findCertificationByTimeRange', () => {
       body: {
         json: () => {
           return Promise.resolve({
-            'id': null,
-            'errors': null,
-            'message': '200 - OK.',
-            'totalCount': '12345',
-            'totalPage': '12345',
-            'pageNumber': '12345',
+            'totalCount': '11111',
+            'totalPage': '22222',
+            'pageNumber': '33333',
             'hojin-infos': [
               {
-                'corporate_number': '8000012010038',
-                'postal_code': '1020094',
-                'location': '東京都千代田区紀尾井町１番３号東京ガーデンテラス紀尾井町',
-                'name': 'デジタル庁',
-                'kana': 'でじたるちょう',
-                'name_en': 'Digital Agency',
-                'status': '-',
-                'update_date': '2021-09-02T00:00:00+09:00',
                 'certification': [
                   {
                     'date_of_approval': '2016-01-21',
@@ -177,6 +152,10 @@ describe('findCertificationByTimeRange', () => {
                     'government_departments': '経済産業省',
                   },
                 ],
+                'corporate_number': 'string',
+                'name': 'string',
+                'status': 'string',
+                'update_date': '2021-09-02T00:00:00+09:00',
               },
             ],
           });
@@ -185,10 +164,10 @@ describe('findCertificationByTimeRange', () => {
     }));
     const client = new GbizinfoClient({token: 'xxxxx'});
     const actual = await client.findCertificationByTimeRange(1, new Date(), new Date());
-    expect(actual.totalCount).toEqual(12345);
-    expect(actual.totalPage).toEqual(12345);
-    expect(actual.pageNumber).toEqual(12345);
-    expect(actual.corporations[0].corporateNumber).toEqual('8000012010038');
+    expect(actual.totalCount).toEqual(11111);
+    expect(actual.totalPage).toEqual(22222);
+    expect(actual.pageNumber).toEqual(33333);
+    expect(actual.corporations[0].corporateNumber).toEqual('string');
     expect(actual.corporations[0].certification.length).toEqual(1);
   });
 });
@@ -235,22 +214,11 @@ describe('findCommendationByTimeRange', () => {
       body: {
         json: () => {
           return Promise.resolve({
-            'id': null,
-            'errors': null,
-            'message': '200 - OK.',
-            'totalCount': '12345',
-            'totalPage': '12345',
-            'pageNumber': '12345',
+            'totalCount': '11111',
+            'totalPage': '22222',
+            'pageNumber': '33333',
             'hojin-infos': [
               {
-                'corporate_number': '8000012010038',
-                'postal_code': '1020094',
-                'location': '東京都千代田区紀尾井町１番３号東京ガーデンテラス紀尾井町',
-                'name': 'デジタル庁',
-                'kana': 'でじたるちょう',
-                'name_en': 'Digital Agency',
-                'status': '-',
-                'update_date': '2021-09-02T00:00:00+09:00',
                 'commendation': [
                   {
                     'date_of_commendation': null,
@@ -260,6 +228,10 @@ describe('findCommendationByTimeRange', () => {
                     'government_departments': '厚生労働省',
                   },
                 ],
+                'corporate_number': 'string',
+                'name': 'string',
+                'status': 'string',
+                'update_date': '2021-09-02T00:00:00+09:00',
               },
             ],
           });
@@ -268,10 +240,10 @@ describe('findCommendationByTimeRange', () => {
     }));
     const client = new GbizinfoClient({token: 'xxxxx'});
     const actual = await client.findCommendationByTimeRange(1, new Date(), new Date());
-    expect(actual.totalCount).toEqual(12345);
-    expect(actual.totalPage).toEqual(12345);
-    expect(actual.pageNumber).toEqual(12345);
-    expect(actual.corporations[0].corporateNumber).toEqual('8000012010038');
+    expect(actual.totalCount).toEqual(11111);
+    expect(actual.totalPage).toEqual(22222);
+    expect(actual.pageNumber).toEqual(33333);
+    expect(actual.corporations[0].corporateNumber).toEqual('string');
     expect(actual.corporations[0].commendation.length).toEqual(1);
   });
 });
@@ -318,19 +290,12 @@ describe('findFinanceByTimeRange', () => {
       body: {
         json: () => {
           return Promise.resolve({
-            'id': null,
-            'errors': null,
-            'message': '200 - OK.',
-            'totalCount': '12345',
-            'totalPage': '12345',
-            'pageNumber': '12345',
+            'totalCount': '11111',
+            'totalPage': '22222',
+            'pageNumber': '33333',
             'hojin-infos': [
               {
-                'corporate_number': '8000012010038',
-                'kana': 'でじたるちょう',
-                'location': '東京都千代田区紀尾井町１番３号東京ガーデンテラス紀尾井町',
-                'name': 'デジタル庁',
-                'name_en': 'Digital Agency',
+                'corporate_number': 'string',
                 'finance': {
                   'accounting_standards': 'aaa',
                   'fiscal_year_cover_page': 'bbb',
@@ -341,8 +306,8 @@ describe('findFinanceByTimeRange', () => {
                     },
                   ],
                 },
-                'postal_code': '1020094',
-                'status': '-',
+                'name': 'string',
+                'status': 'string',
                 'update_date': '2021-09-02T00:00:00+09:00',
               },
             ],
@@ -352,10 +317,10 @@ describe('findFinanceByTimeRange', () => {
     }));
     const client = new GbizinfoClient({token: 'xxxxx'});
     const actual = await client.findFinanceByTimeRange(1, new Date(), new Date());
-    expect(actual.totalCount).toEqual(12345);
-    expect(actual.totalPage).toEqual(12345);
-    expect(actual.pageNumber).toEqual(12345);
-    expect(actual.corporations[0].corporateNumber).toEqual('8000012010038');
+    expect(actual.totalCount).toEqual(11111);
+    expect(actual.totalPage).toEqual(22222);
+    expect(actual.pageNumber).toEqual(33333);
+    expect(actual.corporations[0].corporateNumber).toEqual('string');
     expect(actual.corporations[0].finance.majorShareholders.length).toEqual(1);
   });
 
@@ -364,19 +329,12 @@ describe('findFinanceByTimeRange', () => {
       body: {
         json: () => {
           return Promise.resolve({
-            'id': null,
-            'errors': null,
-            'message': '200 - OK.',
-            'totalCount': '12345',
-            'totalPage': '12345',
-            'pageNumber': '12345',
+            'totalCount': '11111',
+            'totalPage': '22222',
+            'pageNumber': '33333',
             'hojin-infos': [
               {
-                'corporate_number': '8000012010038',
-                'kana': 'でじたるちょう',
-                'location': '東京都千代田区紀尾井町１番３号東京ガーデンテラス紀尾井町',
-                'name': 'デジタル庁',
-                'name_en': 'Digital Agency',
+                'corporate_number': 'string',
                 'finance': {
                   'accounting_standards': 'aaa',
                   'fiscal_year_cover_page': 'bbb',
@@ -410,8 +368,8 @@ describe('findFinanceByTimeRange', () => {
                     },
                   ],
                 },
-                'postal_code': '1020094',
-                'status': '-',
+                'name': 'string',
+                'status': 'string',
                 'update_date': '2021-09-02T00:00:00+09:00',
               },
             ],
@@ -421,10 +379,10 @@ describe('findFinanceByTimeRange', () => {
     }));
     const client = new GbizinfoClient({token: 'xxxxx'});
     const actual = await client.findFinanceByTimeRange(1, new Date(), new Date());
-    expect(actual.totalCount).toEqual(12345);
-    expect(actual.totalPage).toEqual(12345);
-    expect(actual.pageNumber).toEqual(12345);
-    expect(actual.corporations[0].corporateNumber).toEqual('8000012010038');
+    expect(actual.totalCount).toEqual(11111);
+    expect(actual.totalPage).toEqual(22222);
+    expect(actual.pageNumber).toEqual(33333);
+    expect(actual.corporations[0].corporateNumber).toEqual('string');
     expect(actual.corporations[0].finance.managementIndex.length).toEqual(1);
   });
 });
@@ -471,22 +429,13 @@ describe('findPatentByTimeRange', () => {
       body: {
         json: () => {
           return Promise.resolve({
-            'id': null,
-            'errors': null,
-            'message': '200 - OK.',
-            'totalCount': '12345',
-            'totalPage': '12345',
-            'pageNumber': '12345',
+            'totalCount': '11111',
+            'totalPage': '22222',
+            'pageNumber': '33333',
             'hojin-infos': [
               {
-                'corporate_number': '8000012010038',
-                'kana': 'でじたるちょう',
-                'location': '東京都千代田区紀尾井町１番３号東京ガーデンテラス紀尾井町',
-                'name': 'デジタル庁',
-                'name_en': 'Digital Agency',
-                'postal_code': '1020094',
-                'status': '-',
-                'update_date': '2021-09-02T00:00:00+09:00',
+                'corporate_number': 'string',
+                'name': 'string',
                 'patent': [
                   {
                     'application_date': 'string',
@@ -498,6 +447,8 @@ describe('findPatentByTimeRange', () => {
                     'title': 'string',
                   },
                 ],
+                'status': 'string',
+                'update_date': '2021-09-02T00:00:00+09:00',
               },
             ],
           });
@@ -506,10 +457,10 @@ describe('findPatentByTimeRange', () => {
     }));
     const client = new GbizinfoClient({token: 'xxxxx'});
     const actual = await client.findPatentByTimeRange(1, new Date(), new Date());
-    expect(actual.totalCount).toEqual(12345);
-    expect(actual.totalPage).toEqual(12345);
-    expect(actual.pageNumber).toEqual(12345);
-    expect(actual.corporations[0].corporateNumber).toEqual('8000012010038');
+    expect(actual.totalCount).toEqual(11111);
+    expect(actual.totalPage).toEqual(22222);
+    expect(actual.pageNumber).toEqual(33333);
+    expect(actual.corporations[0].corporateNumber).toEqual('string');
     expect(actual.corporations[0].patent.length).toEqual(1);
     expect(actual.corporations[0].patent[0].classifications.length).toEqual(1);
   });
@@ -519,22 +470,13 @@ describe('findPatentByTimeRange', () => {
       body: {
         json: () => {
           return Promise.resolve({
-            'id': null,
-            'errors': null,
-            'message': '200 - OK.',
-            'totalCount': '12345',
-            'totalPage': '12345',
-            'pageNumber': '12345',
+            'totalCount': '11111',
+            'totalPage': '22222',
+            'pageNumber': '33333',
             'hojin-infos': [
               {
-                'corporate_number': '8000012010038',
-                'kana': 'でじたるちょう',
-                'location': '東京都千代田区紀尾井町１番３号東京ガーデンテラス紀尾井町',
-                'name': 'デジタル庁',
-                'name_en': 'Digital Agency',
-                'postal_code': '1020094',
-                'status': '-',
-                'update_date': '2021-09-02T00:00:00+09:00',
+                'corporate_number': 'string',
+                'name': 'string',
                 'patent': [
                   {
                     'application_date': 'string',
@@ -543,6 +485,8 @@ describe('findPatentByTimeRange', () => {
                     'title': 'string',
                   },
                 ],
+                'status': 'string',
+                'update_date': '2021-09-02T00:00:00+09:00',
               },
             ],
           });
@@ -551,10 +495,10 @@ describe('findPatentByTimeRange', () => {
     }));
     const client = new GbizinfoClient({token: 'xxxxx'});
     const actual = await client.findPatentByTimeRange(1, new Date(), new Date());
-    expect(actual.totalCount).toEqual(12345);
-    expect(actual.totalPage).toEqual(12345);
-    expect(actual.pageNumber).toEqual(12345);
-    expect(actual.corporations[0].corporateNumber).toEqual('8000012010038');
+    expect(actual.totalCount).toEqual(11111);
+    expect(actual.totalPage).toEqual(22222);
+    expect(actual.pageNumber).toEqual(33333);
+    expect(actual.corporations[0].corporateNumber).toEqual('string');
     expect(actual.corporations[0].patent.length).toEqual(1);
   });
 });
@@ -601,22 +545,13 @@ describe('findProcurementByTimeRange', () => {
       body: {
         json: () => {
           return Promise.resolve({
-            'id': null,
-            'errors': null,
-            'message': '200 - OK.',
-            'totalCount': '12345',
-            'totalPage': '12345',
-            'pageNumber': '12345',
+            'totalCount': '11111',
+            'totalPage': '22222',
+            'pageNumber': '33333',
             'hojin-infos': [
               {
-                'corporate_number': '8000012010038',
-                'kana': 'でじたるちょう',
-                'location': '東京都千代田区紀尾井町１番３号東京ガーデンテラス紀尾井町',
-                'name': 'デジタル庁',
-                'name_en': 'Digital Agency',
-                'postal_code': '1020094',
-                'status': '-',
-                'update_date': '2021-09-02T00:00:00+09:00',
+                'corporate_number': 'string',
+                'name': 'string',
                 'procurement': [
                   {
                     'date_of_order': '2017-04-03T00:00:00+09:00',
@@ -626,6 +561,8 @@ describe('findProcurementByTimeRange', () => {
                     'joint_signatures': null,
                   },
                 ],
+                'status': 'string',
+                'update_date': '2021-09-02T00:00:00+09:00',
               },
             ],
           });
@@ -634,10 +571,10 @@ describe('findProcurementByTimeRange', () => {
     }));
     const client = new GbizinfoClient({token: 'xxxxx'});
     const actual = await client.findProcurementByTimeRange(1, new Date(), new Date());
-    expect(actual.totalCount).toEqual(12345);
-    expect(actual.totalPage).toEqual(12345);
-    expect(actual.pageNumber).toEqual(12345);
-    expect(actual.corporations[0].corporateNumber).toEqual('8000012010038');
+    expect(actual.totalCount).toEqual(11111);
+    expect(actual.totalPage).toEqual(22222);
+    expect(actual.pageNumber).toEqual(33333);
+    expect(actual.corporations[0].corporateNumber).toEqual('string');
     expect(actual.corporations[0].procurement.length).toEqual(1);
   });
 });
@@ -684,22 +621,14 @@ describe('findSubsidyByTimeRange', () => {
       body: {
         json: () => {
           return Promise.resolve({
-            'id': null,
-            'errors': null,
-            'message': '200 - OK.',
-            'totalCount': '12345',
-            'totalPage': '12345',
-            'pageNumber': '12345',
+            'totalCount': '11111',
+            'totalPage': '22222',
+            'pageNumber': '33333',
             'hojin-infos': [
               {
-                'corporate_number': '8000012010038',
-                'kana': 'でじたるちょう',
-                'location': '東京都千代田区紀尾井町１番３号東京ガーデンテラス紀尾井町',
-                'name': 'デジタル庁',
-                'name_en': 'Digital Agency',
-                'postal_code': '1020094',
-                'status': '-',
-                'update_date': '2021-09-02T00:00:00+09:00',
+                'corporate_number': 'string',
+                'name': 'string',
+                'status': 'string',
                 'subsidy': [
                   {
                     'amount': '621000',
@@ -712,6 +641,7 @@ describe('findSubsidyByTimeRange', () => {
                     'title': 'aaaaa',
                   },
                 ],
+                'update_date': '2021-09-02T00:00:00+09:00',
               },
             ],
           });
@@ -720,10 +650,10 @@ describe('findSubsidyByTimeRange', () => {
     }));
     const client = new GbizinfoClient({token: 'xxxxx'});
     const actual = await client.findSubsidyByTimeRange(1, new Date(), new Date());
-    expect(actual.totalCount).toEqual(12345);
-    expect(actual.totalPage).toEqual(12345);
-    expect(actual.pageNumber).toEqual(12345);
-    expect(actual.corporations[0].corporateNumber).toEqual('8000012010038');
+    expect(actual.totalCount).toEqual(11111);
+    expect(actual.totalPage).toEqual(22222);
+    expect(actual.pageNumber).toEqual(33333);
+    expect(actual.corporations[0].corporateNumber).toEqual('string');
     expect(actual.corporations[0].subsidy.length).toEqual(1);
   });
 });
@@ -770,10 +700,9 @@ describe('findWorkplaceByTimeRange', () => {
       body: {
         json: () => {
           return Promise.resolve({
-            'message': 'string',
-            'totalCount': '12345',
-            'totalPage': '12345',
-            'pageNumber': '12345',
+            'totalCount': '11111',
+            'totalPage': '22222',
+            'pageNumber': '33333',
             'hojin-infos': [
               {
                 'corporate_number': 'string',
@@ -798,9 +727,9 @@ describe('findWorkplaceByTimeRange', () => {
     }));
     const client = new GbizinfoClient({token: 'xxxxx'});
     const actual = await client.findWorkplaceByTimeRange(1, new Date(), new Date());
-    expect(actual.totalCount).toEqual(12345);
-    expect(actual.totalPage).toEqual(12345);
-    expect(actual.pageNumber).toEqual(12345);
+    expect(actual.totalCount).toEqual(11111);
+    expect(actual.totalPage).toEqual(22222);
+    expect(actual.pageNumber).toEqual(33333);
     expect(actual.corporations[0].corporateNumber).toEqual('string');
     expect(actual.corporations[0].workplace).toBeDefined();
   });
@@ -810,10 +739,9 @@ describe('findWorkplaceByTimeRange', () => {
       body: {
         json: () => {
           return Promise.resolve({
-            'message': 'string',
-            'totalCount': '12345',
-            'totalPage': '12345',
-            'pageNumber': '12345',
+            'totalCount': '11111',
+            'totalPage': '22222',
+            'pageNumber': '33333',
             'hojin-infos': [
               {
                 'corporate_number': 'string',
@@ -836,9 +764,9 @@ describe('findWorkplaceByTimeRange', () => {
     }));
     const client = new GbizinfoClient({token: 'xxxxx'});
     const actual = await client.findWorkplaceByTimeRange(1, new Date(), new Date());
-    expect(actual.totalCount).toEqual(12345);
-    expect(actual.totalPage).toEqual(12345);
-    expect(actual.pageNumber).toEqual(12345);
+    expect(actual.totalCount).toEqual(11111);
+    expect(actual.totalPage).toEqual(22222);
+    expect(actual.pageNumber).toEqual(33333);
     expect(actual.corporations[0].corporateNumber).toEqual('string');
     expect(actual.corporations[0].workplace).toBeDefined();
   });
@@ -848,10 +776,9 @@ describe('findWorkplaceByTimeRange', () => {
       body: {
         json: () => {
           return Promise.resolve({
-            'message': 'string',
-            'totalCount': '12345',
-            'totalPage': '12345',
-            'pageNumber': '12345',
+            'totalCount': '11111',
+            'totalPage': '22222',
+            'pageNumber': '33333',
             'hojin-infos': [
               {
                 'corporate_number': 'string',
@@ -876,9 +803,9 @@ describe('findWorkplaceByTimeRange', () => {
     }));
     const client = new GbizinfoClient({token: 'xxxxx'});
     const actual = await client.findWorkplaceByTimeRange(1, new Date(), new Date());
-    expect(actual.totalCount).toEqual(12345);
-    expect(actual.totalPage).toEqual(12345);
-    expect(actual.pageNumber).toEqual(12345);
+    expect(actual.totalCount).toEqual(11111);
+    expect(actual.totalPage).toEqual(22222);
+    expect(actual.pageNumber).toEqual(33333);
     expect(actual.corporations[0].corporateNumber).toEqual('string');
     expect(actual.corporations[0].workplace).toBeDefined();
   });
