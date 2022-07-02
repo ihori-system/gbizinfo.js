@@ -11,6 +11,16 @@ describe('findByCorporateNumber', () => {
   });
 });
 
+describe('findCertificationByCorporateNumber', () => {
+  test('find certification by corporate number', async () => {
+    const client = new GbizinfoClient({token: process.env.X_HOJININFO_API_TOKEN});
+    const actual = await client.findCertificationByCorporateNumber('8000012010038'); // デジタル庁
+    expect(actual.length).toEqual(1);
+    expect(actual[0].corporateNumber).toEqual('8000012010038');
+    expect(actual[0].certification).toBeDefined();
+  });
+});
+
 describe('findByTimeRange', () => {
   test('find by time range', async () => {
     const client = new GbizinfoClient({token: process.env.X_HOJININFO_API_TOKEN});
@@ -71,6 +81,8 @@ describe('findProcurementByTimeRange', () => {
   });
 });
 
+// Disable it due to timeout.
+// FIXME: Resolve timeout issue and enable it.
 // describe('findPatentByTimeRange', () => {
 //   test('find patent by time range', async () => {
 //     const client = new GbizinfoClient({token: process.env.X_HOJININFO_API_TOKEN});

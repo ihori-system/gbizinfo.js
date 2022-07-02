@@ -28,6 +28,42 @@ describe('findByCorporateNumber', () => {
   });
 });
 
+describe('findCertificationByCorporateNumber', () => {
+  test('find certification by corporate number', async () => {
+    undici.request.mockReturnValue(Promise.resolve({
+      body: {
+        json: () => {
+          return Promise.resolve({
+            'hojin-infos': [
+              {
+                'certification': [
+                  {
+                    'date_of_approval': '2016-01-21',
+                    'title': 'hello',
+                    'target': null,
+                    'category': null,
+                    'enterprise_scale': null,
+                    'expiration_date': null,
+                    'government_departments': '経済産業省',
+                  },
+                ],
+                'corporate_number': 'string',
+                'name': 'string',
+                'status': 'string',
+                'update_date': '2021-09-02T00:00:00+09:00',
+              },
+            ],
+          });
+        },
+      },
+    }));
+    const client = new GbizinfoClient({token: 'xxxxx'});
+    const actual = await client.findCertificationByCorporateNumber(1, new Date(), new Date());
+    expect(actual[0].corporateNumber).toEqual('string');
+    expect(actual[0].certification.length).toEqual(1);
+  });
+});
+
 describe('findByTimeRange', () => {
   test('find by time range', async () => {
     undici.request.mockReturnValue(Promise.resolve({
