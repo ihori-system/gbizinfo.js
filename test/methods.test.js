@@ -29,42 +29,6 @@ describe('findByCorporateNumber', () => {
 });
 
 describe('findByTimeRange', () => {
-  test('throws without argument `page`', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findByTimeRange()).toThrow();
-  });
-
-  test('throws when `page` is not number', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findByTimeRange('1')).toThrow();
-  });
-
-  test('throws without argument `from`', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findByTimeRange(1)).toThrow();
-  });
-
-  test('throws when `from` is not Date', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findByTimeRange(1, '2021-04-01')).toThrow();
-  });
-
-  test('throws without argument `to`', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findByTimeRange(1, new Date(2021, 3, 1))).toThrow();
-  });
-
-  test('throws when `to` is not Date', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findByTimeRange(1, new Date(2021, 3, 1), '2021-04-01')).toThrow();
-  });
-
   test('find by time range', async () => {
     undici.request.mockReturnValue(Promise.resolve({
       body: {
@@ -95,42 +59,6 @@ describe('findByTimeRange', () => {
 });
 
 describe('findCertificationByTimeRange', () => {
-  test('throws without argument `page`', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findCertificationByTimeRange()).toThrow();
-  });
-
-  test('throws when `page` is not number', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findCertificationByTimeRange('1')).toThrow();
-  });
-
-  test('throws without argument `from`', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findCertificationByTimeRange(1)).toThrow();
-  });
-
-  test('throws when `from` is not Date', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findCertificationByTimeRange(1, '2021-04-01')).toThrow();
-  });
-
-  test('throws without argument `to`', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findCertificationByTimeRange(1, new Date(2021, 3, 1))).toThrow();
-  });
-
-  test('throws when `to` is not Date', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findCertificationByTimeRange(1, new Date(2021, 3, 1), '2021-04-01')).toThrow();
-  });
-
   test('find certification by time range', async () => {
     undici.request.mockReturnValue(Promise.resolve({
       body: {
@@ -173,42 +101,6 @@ describe('findCertificationByTimeRange', () => {
 });
 
 describe('findCommendationByTimeRange', () => {
-  test('throws without argument `page`', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findCommendationByTimeRange()).toThrow();
-  });
-
-  test('throws when `page` is not number', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findCommendationByTimeRange('1')).toThrow();
-  });
-
-  test('throws without argument `from`', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findCommendationByTimeRange(1)).toThrow();
-  });
-
-  test('throws when `from` is not Date', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findCommendationByTimeRange(1, '2021-04-01')).toThrow();
-  });
-
-  test('throws without argument `to`', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findCommendationByTimeRange(1, new Date(2021, 3, 1))).toThrow();
-  });
-
-  test('throws when `to` is not Date', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findCommendationByTimeRange(1, new Date(2021, 3, 1), '2021-04-01')).toThrow();
-  });
-
   test('find commendation by time range', async () => {
     undici.request.mockReturnValue(Promise.resolve({
       body: {
@@ -249,42 +141,6 @@ describe('findCommendationByTimeRange', () => {
 });
 
 describe('findFinanceByTimeRange', () => {
-  test('throws without argument `page`', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findFinanceByTimeRange()).toThrow();
-  });
-
-  test('throws when `page` is not number', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findFinanceByTimeRange('1')).toThrow();
-  });
-
-  test('throws without argument `from`', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findFinanceByTimeRange(1)).toThrow();
-  });
-
-  test('throws when `from` is not Date', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findFinanceByTimeRange(1, '2021-04-01')).toThrow();
-  });
-
-  test('throws without argument `to`', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findFinanceByTimeRange(1, new Date(2021, 3, 1))).toThrow();
-  });
-
-  test('throws when `to` is not Date', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findFinanceByTimeRange(1, new Date(2021, 3, 1), '2021-04-01')).toThrow();
-  });
-
   test('find finance by time range with major shareholders', async () => {
     undici.request.mockReturnValue(Promise.resolve({
       body: {
@@ -388,42 +244,6 @@ describe('findFinanceByTimeRange', () => {
 });
 
 describe('findPatentByTimeRange', () => {
-  test('throws without argument `page`', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findPatentByTimeRange()).toThrow();
-  });
-
-  test('throws when `page` is not number', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findPatentByTimeRange('1')).toThrow();
-  });
-
-  test('throws without argument `from`', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findPatentByTimeRange(1)).toThrow();
-  });
-
-  test('throws when `from` is not Date', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findPatentByTimeRange(1, '2021-04-01')).toThrow();
-  });
-
-  test('throws without argument `to`', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findPatentByTimeRange(1, new Date(2021, 3, 1))).toThrow();
-  });
-
-  test('throws when `to` is not Date', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findPatentByTimeRange(1, new Date(2021, 3, 1), '2021-04-01')).toThrow();
-  });
-
   test('find patent by time range with classifications', async () => {
     undici.request.mockReturnValue(Promise.resolve({
       body: {
@@ -504,42 +324,6 @@ describe('findPatentByTimeRange', () => {
 });
 
 describe('findProcurementByTimeRange', () => {
-  test('throws without argument `page`', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findProcurementByTimeRange()).toThrow();
-  });
-
-  test('throws when `page` is not number', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findProcurementByTimeRange('1')).toThrow();
-  });
-
-  test('throws without argument `from`', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findProcurementByTimeRange(1)).toThrow();
-  });
-
-  test('throws when `from` is not Date', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findProcurementByTimeRange(1, '2021-04-01')).toThrow();
-  });
-
-  test('throws without argument `to`', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findProcurementByTimeRange(1, new Date(2021, 3, 1))).toThrow();
-  });
-
-  test('throws when `to` is not Date', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findProcurementByTimeRange(1, new Date(2021, 3, 1), '2021-04-01')).toThrow();
-  });
-
   test('find procurement by time range', async () => {
     undici.request.mockReturnValue(Promise.resolve({
       body: {
@@ -580,42 +364,6 @@ describe('findProcurementByTimeRange', () => {
 });
 
 describe('findSubsidyByTimeRange', () => {
-  test('throws without argument `page`', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findSubsidyByTimeRange()).toThrow();
-  });
-
-  test('throws when `page` is not number', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findSubsidyByTimeRange('1')).toThrow();
-  });
-
-  test('throws without argument `from`', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findSubsidyByTimeRange(1)).toThrow();
-  });
-
-  test('throws when `from` is not Date', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findSubsidyByTimeRange(1, '2021-04-01')).toThrow();
-  });
-
-  test('throws without argument `to`', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findSubsidyByTimeRange(1, new Date(2021, 3, 1))).toThrow();
-  });
-
-  test('throws when `to` is not Date', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findSubsidyByTimeRange(1, new Date(2021, 3, 1), '2021-04-01')).toThrow();
-  });
-
   test('find subsidy by time range', async () => {
     undici.request.mockReturnValue(Promise.resolve({
       body: {
@@ -659,42 +407,6 @@ describe('findSubsidyByTimeRange', () => {
 });
 
 describe('findWorkplaceByTimeRange', () => {
-  test('throws without argument `page`', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findWorkplaceByTimeRange()).toThrow();
-  });
-
-  test('throws when `page` is not number', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findWorkplaceByTimeRange('1')).toThrow();
-  });
-
-  test('throws without argument `from`', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findWorkplaceByTimeRange(1)).toThrow();
-  });
-
-  test('throws when `from` is not Date', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findWorkplaceByTimeRange(1, '2021-04-01')).toThrow();
-  });
-
-  test('throws without argument `to`', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findWorkplaceByTimeRange(1, new Date(2021, 3, 1))).toThrow();
-  });
-
-  test('throws when `to` is not Date', async () => {
-    undici.request.mockReturnValue(Promise.resolve({}));
-    const client = new GbizinfoClient({token: 'xxxxx'});
-    expect(() => client.findWorkplaceByTimeRange(1, new Date(2021, 3, 1), '2021-04-01')).toThrow();
-  });
-
   test('find workplace by time range with base infos', async () => {
     undici.request.mockReturnValue(Promise.resolve({
       body: {
