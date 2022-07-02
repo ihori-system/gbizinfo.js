@@ -597,3 +597,159 @@ describe('findSubsidyByTimeRange', () => {
     expect(actual.corporations[0].subsidy.length).toEqual(1);
   });
 });
+
+describe('findWorkplaceByTimeRange', () => {
+  test('throws without argument `page`', async () => {
+    undici.request.mockReturnValue(Promise.resolve({}));
+    const client = new GbizinfoClient({token: 'xxxxx'});
+    expect(() => client.findWorkplaceByTimeRange()).toThrow();
+  });
+
+  test('throws when `page` is not number', async () => {
+    undici.request.mockReturnValue(Promise.resolve({}));
+    const client = new GbizinfoClient({token: 'xxxxx'});
+    expect(() => client.findWorkplaceByTimeRange('1')).toThrow();
+  });
+
+  test('throws without argument `from`', async () => {
+    undici.request.mockReturnValue(Promise.resolve({}));
+    const client = new GbizinfoClient({token: 'xxxxx'});
+    expect(() => client.findWorkplaceByTimeRange(1)).toThrow();
+  });
+
+  test('throws when `from` is not Date', async () => {
+    undici.request.mockReturnValue(Promise.resolve({}));
+    const client = new GbizinfoClient({token: 'xxxxx'});
+    expect(() => client.findWorkplaceByTimeRange(1, '2021-04-01')).toThrow();
+  });
+
+  test('throws without argument `to`', async () => {
+    undici.request.mockReturnValue(Promise.resolve({}));
+    const client = new GbizinfoClient({token: 'xxxxx'});
+    expect(() => client.findWorkplaceByTimeRange(1, new Date(2021, 3, 1))).toThrow();
+  });
+
+  test('throws when `to` is not Date', async () => {
+    undici.request.mockReturnValue(Promise.resolve({}));
+    const client = new GbizinfoClient({token: 'xxxxx'});
+    expect(() => client.findWorkplaceByTimeRange(1, new Date(2021, 3, 1), '2021-04-01')).toThrow();
+  });
+
+  test('find workplace by time range with base infos', async () => {
+    undici.request.mockReturnValue(Promise.resolve({
+      body: {
+        json: () => {
+          return Promise.resolve({
+            'message': 'string',
+            'totalCount': '12345',
+            'totalPage': '12345',
+            'pageNumber': '12345',
+            'hojin-infos': [
+              {
+                'corporate_number': 'string',
+                'name': 'string',
+                'status': 'string',
+                'update_date': '2021-09-02T00:00:00+09:00',
+                'workplace_info': {
+                  'base_infos': {
+                    'average_age': 0,
+                    'average_continuous_service_years': 0,
+                    'average_continuous_service_years_Female': 0,
+                    'average_continuous_service_years_Male': 0,
+                    'average_continuous_service_years_type': 'string',
+                    'month_average_predetermined_overtime_hours': 0,
+                  },
+                },
+              },
+            ],
+          });
+        },
+      },
+    }));
+    const client = new GbizinfoClient({token: 'xxxxx'});
+    const actual = await client.findWorkplaceByTimeRange(1, new Date(), new Date());
+    expect(actual.totalCount).toEqual(12345);
+    expect(actual.totalPage).toEqual(12345);
+    expect(actual.pageNumber).toEqual(12345);
+    expect(actual.corporations[0].corporateNumber).toEqual('string');
+    expect(actual.corporations[0].workplace).toBeDefined();
+  });
+
+  test('find workplace by time range with compatibility of childcare and work', async () => {
+    undici.request.mockReturnValue(Promise.resolve({
+      body: {
+        json: () => {
+          return Promise.resolve({
+            'message': 'string',
+            'totalCount': '12345',
+            'totalPage': '12345',
+            'pageNumber': '12345',
+            'hojin-infos': [
+              {
+                'corporate_number': 'string',
+                'name': 'string',
+                'status': 'string',
+                'update_date': '2021-09-02T00:00:00+09:00',
+                'workplace_info': {
+                  'compatibility_of_childcare_and_work': {
+                    'maternity_leave_acquisition_num': 0,
+                    'number_of_maternity_leave': 0,
+                    'number_of_paternity_leave': 0,
+                    'paternity_leave_acquisition_num': 0,
+                  },
+                },
+              },
+            ],
+          });
+        },
+      },
+    }));
+    const client = new GbizinfoClient({token: 'xxxxx'});
+    const actual = await client.findWorkplaceByTimeRange(1, new Date(), new Date());
+    expect(actual.totalCount).toEqual(12345);
+    expect(actual.totalPage).toEqual(12345);
+    expect(actual.pageNumber).toEqual(12345);
+    expect(actual.corporations[0].corporateNumber).toEqual('string');
+    expect(actual.corporations[0].workplace).toBeDefined();
+  });
+
+  test('find workplace by time range with women activity infos', async () => {
+    undici.request.mockReturnValue(Promise.resolve({
+      body: {
+        json: () => {
+          return Promise.resolve({
+            'message': 'string',
+            'totalCount': '12345',
+            'totalPage': '12345',
+            'pageNumber': '12345',
+            'hojin-infos': [
+              {
+                'corporate_number': 'string',
+                'name': 'string',
+                'status': 'string',
+                'update_date': '2021-09-02T00:00:00+09:00',
+                'workplace_info': {
+                  'women_activity_infos': {
+                    'female_share_of_manager': 0,
+                    'female_share_of_officers': 0,
+                    'female_workers_proportion': 0,
+                    'female_workers_proportion_type': 'string',
+                    'gender_total_of_manager': 0,
+                    'gender_total_of_officers': 0,
+                  },
+                },
+              },
+            ],
+          });
+        },
+      },
+    }));
+    const client = new GbizinfoClient({token: 'xxxxx'});
+    const actual = await client.findWorkplaceByTimeRange(1, new Date(), new Date());
+    expect(actual.totalCount).toEqual(12345);
+    expect(actual.totalPage).toEqual(12345);
+    expect(actual.pageNumber).toEqual(12345);
+    expect(actual.corporations[0].corporateNumber).toEqual('string');
+    expect(actual.corporations[0].workplace).toBeDefined();
+  });
+});

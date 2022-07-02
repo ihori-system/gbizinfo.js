@@ -43,6 +43,7 @@ module.exports.CORPORATION_PROPERTIES = [
   'status',
   'subsidy',
   'update_date',
+  'workplace_info',
 ];
 
 module.exports.FINANCE_PROPERTIES = [
@@ -102,4 +103,35 @@ module.exports.SUBSIDY_PROPERTIES = [
   'subsidy_resource',
   'target',
   'title',
+];
+
+module.exports.WORKPLACE_PROPERTIES = [
+  'base_infos',
+  'compatibility_of_childcare_and_work',
+  'women_activity_infos',
+];
+
+module.exports.WORKPLACE_BASE_INFORMATION_PROPERTIES = [
+  'average_age',
+  'average_continuous_service_years',
+  'average_continuous_service_years_Female',
+  'average_continuous_service_years_Male',
+  'average_continuous_service_years_type',
+  'month_average_predetermined_overtime_hours',
+];
+
+module.exports.WORKPLACE_COMPATIBILITY_OF_CHILDREN_AND_WORK_PROPERTIES = [
+  'maternity_leave_acquisition_num',
+  'number_of_maternity_leave',
+  'number_of_paternity_leave',
+  'paternity_leave_acquisition_num',
+];
+
+module.exports.WORKPLACE_WOMEN_ACTIVITY_INFORMATION_PROPERTIES = [
+  'female_share_of_manager',
+  'female_share_of_officers',
+  'female_workers_proportion',
+  'female_workers_proportion_type',
+  'gender_total_of_manager',
+  'gender_total_of_officers',
 ];

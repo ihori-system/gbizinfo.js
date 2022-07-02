@@ -44,6 +44,7 @@ export interface Corporation {
   representativeName?: string
   representativePosition?: string
   status: string
+  subsidy?: Array<Subsidy>
   updateDate: string
 }
 
@@ -93,6 +94,48 @@ export interface Procurement {
   governmentDepartments: string
   jointSignatures?: Array<string>
   title: string
+}
+
+export interface Subsidy {
+  amount: string
+  dateOfApproval: string
+  governmentDepartments: string
+  jointSignatures: Array<string>
+  note: string
+  subsidyResource: string
+  target: string
+  title: string
+}
+
+export interface Workplace {
+  baseInformation?: WorkplaceBaseInformation
+  compatibilityOfChildcareAndWork?: WorkplaceCompatibilityOfChildrenAndWork
+  womenActivityInformation?: WorkplaceWomenActivityInformation
+}
+
+export interface WorkplaceBaseInformation {
+  averageAge?: number
+  averageContinuousServiceYears?: number
+  averageContinuousServiceYearsFemale?: number
+  averageContinuousServiceYearsMale?: number
+  averageContinuousServiceYearsType?: string
+  monthAveragePredeterminedOvertimeHours?: number
+}
+
+export interface WorkplaceCompatibilityOfChildrenAndWork {
+  maternityLeaveAcquisitionNum?: number
+  numberOfMaternityLeave?: number
+  numberOfPaternityLeave?: number
+  paternityLeaveAcquisitionNum?: number
+}
+
+export interface WorkplaceWomenActivityInformation {
+  femaleShareOfManager?: number
+  femaleShareOfOfficers?: number
+  femaleWorkersProportion?: number
+  femaleWorkersProportionType?: string
+  genderTotalOfManager?: number
+  genderTotalOfOfficers?: number
 }
 
 /**
