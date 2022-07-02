@@ -28,7 +28,10 @@
         <article>
             <pre class="prettyprint source linenums"><code>const {request} = require('undici');
 const {convertToCorporate} = require('./converters');
-const {formatYYYYMMDD} = require('./utils');
+const {
+  formatYYYYMMDD,
+  validateTimeRangeOptions,
+} = require('./utils');
 
 const PACKAGE_NAME = '@ihori-system/gbizinfo';
 const API_ENDPOINT = 'https://info.gbiz.go.jp/hojin';
@@ -87,24 +90,8 @@ class GbizinfoClient {
    * @return {Promise&lt;Object>} 法人基本情報およびページングの情報
    */
   findByTimeRange(page, from, to) {
-    if (page == null) {
-      throw new TypeError(`[${PACKAGE_NAME}] page引数が指定されていません`);
-    }
-    if (typeof page !== 'number') {
-      throw new TypeError(`[${PACKAGE_NAME}] pageに数値以外の値が入っています`);
-    }
-    if (from == null) {
-      throw new TypeError(`[${PACKAGE_NAME}] from引数が指定されていません`);
-    }
-    if (from instanceof Date === false) {
-      throw new TypeError(`[${PACKAGE_NAME}] fromがDateオブジェクトではありません`);
-    }
-    if (to == null) {
-      throw new TypeError(`[${PACKAGE_NAME}] to引数が指定されていません`);
-    }
-    if (to instanceof Date === false) {
-      throw new TypeError(`[${PACKAGE_NAME}] toがDateオブジェクトではありません`);
-    }
+    validateTimeRangeOptions(page, from, to);
+
     return this.findByTimeRangeRaw(page, from, to)
         .then((data) => {
           const corporations = data['hojin-infos'];
@@ -143,24 +130,8 @@ class GbizinfoClient {
    * @return {Promise&lt;Object>} 届出・認定情報
    */
   findCertificationByTimeRange(page, from, to) {
-    if (page == null) {
-      throw new TypeError(`[${PACKAGE_NAME}] page引数が指定されていません`);
-    }
-    if (typeof page !== 'number') {
-      throw new TypeError(`[${PACKAGE_NAME}] pageに数値以外の値が入っています`);
-    }
-    if (from == null) {
-      throw new TypeError(`[${PACKAGE_NAME}] from引数が指定されていません`);
-    }
-    if (from instanceof Date === false) {
-      throw new TypeError(`[${PACKAGE_NAME}] fromがDateオブジェクトではありません`);
-    }
-    if (to == null) {
-      throw new TypeError(`[${PACKAGE_NAME}] to引数が指定されていません`);
-    }
-    if (to instanceof Date === false) {
-      throw new TypeError(`[${PACKAGE_NAME}] toがDateオブジェクトではありません`);
-    }
+    validateTimeRangeOptions(page, from, to);
+
     return this.findCertificationByTimeRangeRaw(page, from, to)
         .then((data) => {
           const corporations = data['hojin-infos'];
@@ -199,24 +170,8 @@ class GbizinfoClient {
    * @return {Promise&lt;Object>} 表彰情報
    */
   findCommendationByTimeRange(page, from, to) {
-    if (page == null) {
-      throw new TypeError(`[${PACKAGE_NAME}] page引数が指定されていません`);
-    }
-    if (typeof page !== 'number') {
-      throw new TypeError(`[${PACKAGE_NAME}] pageに数値以外の値が入っています`);
-    }
-    if (from == null) {
-      throw new TypeError(`[${PACKAGE_NAME}] from引数が指定されていません`);
-    }
-    if (from instanceof Date === false) {
-      throw new TypeError(`[${PACKAGE_NAME}] fromがDateオブジェクトではありません`);
-    }
-    if (to == null) {
-      throw new TypeError(`[${PACKAGE_NAME}] to引数が指定されていません`);
-    }
-    if (to instanceof Date === false) {
-      throw new TypeError(`[${PACKAGE_NAME}] toがDateオブジェクトではありません`);
-    }
+    validateTimeRangeOptions(page, from, to);
+
     return this.findCommendationByTimeRangeRaw(page, from, to)
         .then((data) => {
           const corporations = data['hojin-infos'];
@@ -255,24 +210,8 @@ class GbizinfoClient {
    * @return {Promise&lt;Object>} 財務情報
    */
   findFinanceByTimeRange(page, from, to) {
-    if (page == null) {
-      throw new TypeError(`[${PACKAGE_NAME}] page引数が指定されていません`);
-    }
-    if (typeof page !== 'number') {
-      throw new TypeError(`[${PACKAGE_NAME}] pageに数値以外の値が入っています`);
-    }
-    if (from == null) {
-      throw new TypeError(`[${PACKAGE_NAME}] from引数が指定されていません`);
-    }
-    if (from instanceof Date === false) {
-      throw new TypeError(`[${PACKAGE_NAME}] fromがDateオブジェクトではありません`);
-    }
-    if (to == null) {
-      throw new TypeError(`[${PACKAGE_NAME}] to引数が指定されていません`);
-    }
-    if (to instanceof Date === false) {
-      throw new TypeError(`[${PACKAGE_NAME}] toがDateオブジェクトではありません`);
-    }
+    validateTimeRangeOptions(page, from, to);
+
     return this.findFinanceByTimeRangeRaw(page, from, to)
         .then((data) => {
           const corporations = data['hojin-infos'];
@@ -311,24 +250,8 @@ class GbizinfoClient {
    * @return {Promise&lt;Object>} 特許情報
    */
   findPatentByTimeRange(page, from, to) {
-    if (page == null) {
-      throw new TypeError(`[${PACKAGE_NAME}] page引数が指定されていません`);
-    }
-    if (typeof page !== 'number') {
-      throw new TypeError(`[${PACKAGE_NAME}] pageに数値以外の値が入っています`);
-    }
-    if (from == null) {
-      throw new TypeError(`[${PACKAGE_NAME}] from引数が指定されていません`);
-    }
-    if (from instanceof Date === false) {
-      throw new TypeError(`[${PACKAGE_NAME}] fromがDateオブジェクトではありません`);
-    }
-    if (to == null) {
-      throw new TypeError(`[${PACKAGE_NAME}] to引数が指定されていません`);
-    }
-    if (to instanceof Date === false) {
-      throw new TypeError(`[${PACKAGE_NAME}] toがDateオブジェクトではありません`);
-    }
+    validateTimeRangeOptions(page, from, to);
+
     return this.findPatentByTimeRangeRaw(page, from, to)
         .then((data) => {
           const corporations = data['hojin-infos'];
@@ -367,24 +290,8 @@ class GbizinfoClient {
    * @return {Promise&lt;Object>} 調達情報
    */
   findProcurementByTimeRange(page, from, to) {
-    if (page == null) {
-      throw new TypeError(`[${PACKAGE_NAME}] page引数が指定されていません`);
-    }
-    if (typeof page !== 'number') {
-      throw new TypeError(`[${PACKAGE_NAME}] pageに数値以外の値が入っています`);
-    }
-    if (from == null) {
-      throw new TypeError(`[${PACKAGE_NAME}] from引数が指定されていません`);
-    }
-    if (from instanceof Date === false) {
-      throw new TypeError(`[${PACKAGE_NAME}] fromがDateオブジェクトではありません`);
-    }
-    if (to == null) {
-      throw new TypeError(`[${PACKAGE_NAME}] to引数が指定されていません`);
-    }
-    if (to instanceof Date === false) {
-      throw new TypeError(`[${PACKAGE_NAME}] toがDateオブジェクトではありません`);
-    }
+    validateTimeRangeOptions(page, from, to);
+
     return this.findProcurementByTimeRangeRaw(page, from, to)
         .then((data) => {
           const corporations = data['hojin-infos'];
@@ -423,24 +330,8 @@ class GbizinfoClient {
    * @return {Promise&lt;Object>} 補助金情報
    */
   findSubsidyByTimeRange(page, from, to) {
-    if (page == null) {
-      throw new TypeError(`[${PACKAGE_NAME}] page引数が指定されていません`);
-    }
-    if (typeof page !== 'number') {
-      throw new TypeError(`[${PACKAGE_NAME}] pageに数値以外の値が入っています`);
-    }
-    if (from == null) {
-      throw new TypeError(`[${PACKAGE_NAME}] from引数が指定されていません`);
-    }
-    if (from instanceof Date === false) {
-      throw new TypeError(`[${PACKAGE_NAME}] fromがDateオブジェクトではありません`);
-    }
-    if (to == null) {
-      throw new TypeError(`[${PACKAGE_NAME}] to引数が指定されていません`);
-    }
-    if (to instanceof Date === false) {
-      throw new TypeError(`[${PACKAGE_NAME}] toがDateオブジェクトではありません`);
-    }
+    validateTimeRangeOptions(page, from, to);
+
     return this.findSubsidyByTimeRangeRaw(page, from, to)
         .then((data) => {
           const corporations = data['hojin-infos'];
@@ -479,24 +370,8 @@ class GbizinfoClient {
    * @return {Promise&lt;Object>} 職場情報
    */
   findWorkplaceByTimeRange(page, from, to) {
-    if (page == null) {
-      throw new TypeError(`[${PACKAGE_NAME}] page引数が指定されていません`);
-    }
-    if (typeof page !== 'number') {
-      throw new TypeError(`[${PACKAGE_NAME}] pageに数値以外の値が入っています`);
-    }
-    if (from == null) {
-      throw new TypeError(`[${PACKAGE_NAME}] from引数が指定されていません`);
-    }
-    if (from instanceof Date === false) {
-      throw new TypeError(`[${PACKAGE_NAME}] fromがDateオブジェクトではありません`);
-    }
-    if (to == null) {
-      throw new TypeError(`[${PACKAGE_NAME}] to引数が指定されていません`);
-    }
-    if (to instanceof Date === false) {
-      throw new TypeError(`[${PACKAGE_NAME}] toがDateオブジェクトではありません`);
-    }
+    validateTimeRangeOptions(page, from, to);
+
     return this.findWorkplaceByTimeRangeRaw(page, from, to)
         .then((data) => {
           const corporations = data['hojin-infos'];
@@ -545,7 +420,7 @@ module.exports.GbizinfoClient = GbizinfoClient;
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Sat Jul 02 2022 13:00:24 GMT+0900 (Japan Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Sat Jul 02 2022 23:16:59 GMT+0900 (Japan Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
