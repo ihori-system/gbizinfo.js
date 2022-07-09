@@ -8,10 +8,10 @@
     "lib": "lib"
   },
   "scripts": {
-    "lint": "eslint .",
+    "lint": "standard",
     "test": "npm run test:unit && npm run test:e2e && npm run test:types",
     "test:unit": "jest --config=jest.config.mjs",
-    "test:types": "tsd",
+    "test:types": "tsc --noEmit && tsd",
     "test:e2e": "jest --config=jest.config.e2e.mjs",
     "docs": "jsdoc -d ./docs/ lib/index.js"
   },
@@ -31,12 +31,16 @@
   },
   "devDependencies": {
     "dotenv": "^16.0.1",
-    "eslint": "^8.19.0",
-    "eslint-config-google": "^0.14.0",
     "jest": "^28.1.2",
     "jsdoc": "^3.6.10",
+    "standard": "^17.0.0",
     "tsd": "^0.22.0",
     "typescript": "^4.7.4"
+  },
+  "standard": {
+    "ignore": [
+      "docs/"
+    ]
   },
   "tsd": {
     "directory": "test"
