@@ -5,16 +5,16 @@ module.exports.CERTIFICATION_PROPERTIES = [
   'expiration_date',
   'government_departments',
   'target',
-  'title',
-];
+  'title'
+]
 
 module.exports.COMMENDATION_PROPERTIES = [
   'category',
   'date_of_commendation',
   'government_departments',
   'target',
-  'title',
-];
+  'title'
+]
 
 module.exports.CORPORATION_PROPERTIES = [
   'business_items',
@@ -44,20 +44,20 @@ module.exports.CORPORATION_PROPERTIES = [
   'status',
   'subsidy',
   'update_date',
-  'workplace_info',
-];
+  'workplace_info'
+]
 
 module.exports.FINANCE_PROPERTIES = [
   'accounting_standards',
   'fiscal_year_cover_page',
   'major_shareholders',
-  'management_index',
-];
+  'management_index'
+]
 
 module.exports.MAJOR_SHAREHOLDER_PROPERTIES = [
   'name_major_shareholders',
-  'shareholding_ratio',
-];
+  'shareholding_ratio'
+]
 
 module.exports.MANAGEMENT_INDEX_PROPERTIES = [
   'capital_stock_summary_of_business_results',
@@ -84,30 +84,30 @@ module.exports.MANAGEMENT_INDEX_PROPERTIES = [
   'ordinary_income_summary_of_business_results_unit_ref',
   'period',
   'total_assets_summary_of_business_results',
-  'total_assets_summary_of_business_results_unit_ref',
-];
+  'total_assets_summary_of_business_results_unit_ref'
+]
 
 module.exports.PATENT_PROPERTIES = [
   'application_date',
   'application_number',
   'classifications',
   'patent_type',
-  'title',
-];
+  'title'
+]
 
 module.exports.PATENT_CLASSIFICATION_PROPERTIES = [
   'コード名',
   'コード値',
-  '日本語',
-];
+  '日本語'
+]
 
 module.exports.PROCUREMENT_PROPERTIES = [
   'amount',
   'date_of_order',
   'government_departments',
   'joint_signatures',
-  'title',
-];
+  'title'
+]
 
 module.exports.SUBSIDY_PROPERTIES = [
   'amount',
@@ -117,14 +117,14 @@ module.exports.SUBSIDY_PROPERTIES = [
   'note',
   'subsidy_resource',
   'target',
-  'title',
-];
+  'title'
+]
 
 module.exports.WORKPLACE_PROPERTIES = [
   'base_infos',
   'compatibility_of_childcare_and_work',
-  'women_activity_infos',
-];
+  'women_activity_infos'
+]
 
 module.exports.WORKPLACE_BASE_INFORMATION_PROPERTIES = [
   'average_age',
@@ -132,15 +132,15 @@ module.exports.WORKPLACE_BASE_INFORMATION_PROPERTIES = [
   'average_continuous_service_years_Female',
   'average_continuous_service_years_Male',
   'average_continuous_service_years_type',
-  'month_average_predetermined_overtime_hours',
-];
+  'month_average_predetermined_overtime_hours'
+]
 
 module.exports.WORKPLACE_COMPATIBILITY_OF_CHILDREN_AND_WORK_PROPERTIES = [
   'maternity_leave_acquisition_num',
   'number_of_maternity_leave',
   'number_of_paternity_leave',
-  'paternity_leave_acquisition_num',
-];
+  'paternity_leave_acquisition_num'
+]
 
 module.exports.WORKPLACE_WOMEN_ACTIVITY_INFORMATION_PROPERTIES = [
   'female_share_of_manager',
@@ -148,5 +148,5 @@ module.exports.WORKPLACE_WOMEN_ACTIVITY_INFORMATION_PROPERTIES = [
   'female_workers_proportion',
   'female_workers_proportion_type',
   'gender_total_of_manager',
-  'gender_total_of_officers',
-];
+  'gender_total_of_officers'
+]

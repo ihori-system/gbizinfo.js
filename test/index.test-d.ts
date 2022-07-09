@@ -1,11 +1,13 @@
+/* eslint-disable no-unused-expressions */
+
 import {
   expectAssignable,
   expectNotAssignable
 } from 'tsd'
 import {
   GbizinfoClientOption
-} from '..' 
+} from '..'
 
-expectAssignable<GbizinfoClientOption>({token: 'xxxxx'})
+expectAssignable < GbizinfoClientOption > ({ token: 'xxxxx' })
 // @ts-ignore
-expectNotAssignable<GbizinfoClientOption>({})
+expectNotAssignable < GbizinfoClientOption > ({})
