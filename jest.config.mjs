@@ -43,12 +43,12 @@ export default {
 
   // An object that configures minimum threshold enforcement for coverage results
   coverageThreshold: {
-    'global': {
-      'branches': 100,
-      'functions': 100,
-      'lines': 100,
-      'statements': 100,
-    },
+    global: {
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100
+    }
   },
 
   // A path to a custom dependency extractor
@@ -132,8 +132,8 @@ export default {
 
   // A list of paths to directories that Jest should use to search for files in
   roots: [
-    '<rootDir>/test',
-  ],
+    '<rootDir>/test'
+  ]
 
   // Allows you to use a custom runner instead of Jest's default test runner
   // runner: "jest-runner",
@@ -199,4 +199,4 @@ export default {
 
   // Whether to use watchman for file crawling
   // watchman: true,
-};
+}

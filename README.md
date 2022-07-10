@@ -2,6 +2,8 @@ gbizinfo.js
 ===
 gBizINFO REST API クライアント
 
+[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
+
 ## Getting started
 
 #### 1) GitHub Packages の設定を行う（GitHub Packagesを使うのが初めての場合）
