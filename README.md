@@ -2,6 +2,8 @@ gbizinfo.js
 ===
 gBizINFO REST API クライアント
 
+[![CI](https://github.com/ihori-system/gbizinfo.js/actions/workflows/ci.yml/badge.svg)](https://github.com/ihori-system/gbizinfo.js/actions/workflows/ci.yml)
+
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
 ## Getting started
