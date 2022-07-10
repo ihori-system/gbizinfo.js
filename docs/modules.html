@@ -10,68 +10,32 @@
 <div class="col-8 col-content">
 <div class="tsd-page-title">
 <h2>@ihori-system/gbizinfo</h2></div>
-<div class="tsd-panel tsd-typography">
-<a href="#gbizinfojs" id="gbizinfojs" style="color: inherit; text-decoration: none;">
-  <h1>gbizinfo.js</h1>
-</a>
-<p>gBizINFO REST API クライアント</p>
-<p><a href="https://github.com/standard/standard"><img src="https://cdn.rawgit.com/standard/standard/master/badge.svg" alt="JavaScript Style Guide"></a></p>
-
-<a href="#getting-started" id="getting-started" style="color: inherit; text-decoration: none;">
-  <h2>Getting started</h2>
-</a>
-
-<a href="#1-github-packages-の設定を行う（github-packagesを使うのが初めての場合）" id="1-github-packages-の設定を行う（github-packagesを使うのが初めての場合）" style="color: inherit; text-decoration: none;">
-  <h4>1) GitHub Packages の設定を行う（GitHub Packagesを使うのが初めての場合）</h4>
-</a>
-
-<a href="#11-personal-access-token-を発行する" id="11-personal-access-token-を発行する" style="color: inherit; text-decoration: none;">
-  <h5>1.1) Personal access token を発行する</h5>
-</a>
-<p>参考：<a href="https://github.com/settings/tokens">https://github.com/settings/tokens</a></p>
-
-<a href="#12-各npmrc-ファイルへ以下を追記する" id="12-各npmrc-ファイルへ以下を追記する" style="color: inherit; text-decoration: none;">
-  <h5>1.2) 各<code>.npmrc</code> ファイルへ以下を追記する</h5>
-</a>
-<p><code>~/.npmrc</code>:</p>
-<pre><code><span class="hl-0">//npm.pkg.github.com/:_authToken={{手順1.1で発行したアクセストークン}}</span>
-</code></pre>
-<p><code>{{package.jsonが配置されているディレクトリ}}/.npmrc</code>:</p>
-<pre><code><span class="hl-1">@</span><span class="hl-2">ihori</span><span class="hl-1">-</span><span class="hl-2">system</span><span class="hl-1">:</span><span class="hl-2">registry</span><span class="hl-1">=</span><span class="hl-2">https</span><span class="hl-1">:</span><span class="hl-0">//npm.pkg.github.com</span>
-</code></pre>
-
-<a href="#2-web-api利用申請を行い、apiトークンを取得する" id="2-web-api利用申請を行い、apiトークンを取得する" style="color: inherit; text-decoration: none;">
-  <h4>2) Web API利用申請を行い、APIトークンを取得する</h4>
-</a>
-<p>参考：<a href="https://info.gbiz.go.jp/hojin/api_registration/form">https://info.gbiz.go.jp/hojin/api_registration/form</a></p>
-
-<a href="#3-ライブラリをインストールする" id="3-ライブラリをインストールする" style="color: inherit; text-decoration: none;">
-  <h4>3) ライブラリをインストールする</h4>
-</a>
-<pre><code><span class="hl-2">$</span><span class="hl-1"> </span><span class="hl-2">npm</span><span class="hl-1"> </span><span class="hl-2">install</span><span class="hl-1"> @</span><span class="hl-2">ihori</span><span class="hl-1">-</span><span class="hl-2">system</span><span class="hl-1">/</span><span class="hl-2">gbizinfo</span>
-</code></pre>
-
-<a href="#4-ライブラリをインポートする" id="4-ライブラリをインポートする" style="color: inherit; text-decoration: none;">
-  <h4>4) ライブラリをインポートする</h4>
-</a>
-<p>サンプルコード：</p>
-<pre><code class="language-javascript"><span class="hl-3">import</span><span class="hl-1"> { </span><span class="hl-2">GbizinfoClient</span><span class="hl-1"> } </span><span class="hl-3">from</span><span class="hl-1"> </span><span class="hl-4">&#39;@ihori-system/gbizinfo&#39;</span><br/><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">client</span><span class="hl-1"> = </span><span class="hl-5">new</span><span class="hl-1"> </span><span class="hl-7">GbizinfoClient</span><span class="hl-1">({</span><span class="hl-2">token:</span><span class="hl-1"> </span><span class="hl-4">&#39;{{手順2で取得したAPIトークン}}&#39;</span><span class="hl-1">});</span><br/><span class="hl-2">client</span><span class="hl-1">.</span><span class="hl-7">findByCorporateNumber</span><span class="hl-1">(</span><span class="hl-4">&#39;8000012010038&#39;</span><span class="hl-1">)</span><br/><span class="hl-1">  .</span><span class="hl-7">then</span><span class="hl-1">((</span><span class="hl-2">corporate</span><span class="hl-1">) </span><span class="hl-5">=&gt;</span><span class="hl-1"> </span><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-7">log</span><span class="hl-1">(</span><span class="hl-2">corporate</span><span class="hl-1">.</span><span class="hl-2">name</span><span class="hl-1">)); </span><span class="hl-0">// デジタル庁</span>
-</code></pre>
-
-<a href="#api-ドキュメント" id="api-ドキュメント" style="color: inherit; text-decoration: none;">
-  <h2>API ドキュメント</h2>
-</a>
-<p><a href="https://ihori-system.github.io/gbizinfo.js/">https://ihori-system.github.io/gbizinfo.js/</a></p>
-
-<a href="#references" id="references" style="color: inherit; text-decoration: none;">
-  <h2>References</h2>
-</a>
-<ul>
-<li><a href="https://info.gbiz.go.jp/index.html">gBizINFO</a></li>
-<li><a href="https://info.gbiz.go.jp/hojin/swagger-ui.html">gBizINFO REST API ドキュメント</a></li>
-<li><a href="https://info.gbiz.go.jp/api-spec/document/policy.pdf">gBizINFO 情報提供 REST API ポリシー</a></li>
-</ul>
-</div></div>
+<section class="tsd-panel-group tsd-index-group">
+<section class="tsd-panel tsd-index-panel">
+<h3 class="tsd-index-heading uppercase">Index</h3>
+<section class="tsd-index-section">
+<h3 class="tsd-index-heading">Classes</h3>
+<div class="tsd-index-list"><a href="classes/GbizinfoClient.html" class="tsd-index-link tsd-kind-class"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-class)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-128-path"></rect><path d="M11.898 16.1201C11.098 16.1201 10.466 15.8961 10.002 15.4481C9.53803 15.0001 9.30603 14.3841 9.30603 13.6001V9.64012C9.30603 8.85612 9.53803 8.24012 10.002 7.79212C10.466 7.34412 11.098 7.12012 11.898 7.12012C12.682 7.12012 13.306 7.34812 13.77 7.80412C14.234 8.25212 14.466 8.86412 14.466 9.64012H13.386C13.386 9.14412 13.254 8.76412 12.99 8.50012C12.734 8.22812 12.37 8.09212 11.898 8.09212C11.426 8.09212 11.054 8.22412 10.782 8.48812C10.518 8.75212 10.386 9.13212 10.386 9.62812V13.6001C10.386 14.0961 10.518 14.4801 10.782 14.7521C11.054 15.0161 11.426 15.1481 11.898 15.1481C12.37 15.1481 12.734 15.0161 12.99 14.7521C13.254 14.4801 13.386 14.0961 13.386 13.6001H14.466C14.466 14.3761 14.234 14.9921 13.77 15.4481C13.306 15.8961 12.682 16.1201 11.898 16.1201Z" fill="var(--color-text)" id="icon-128-text"></path></svg><span>Gbizinfo<wbr/>Client</span></a>
+</div></section>
+<section class="tsd-index-section">
+<h3 class="tsd-index-heading">Interfaces</h3>
+<div class="tsd-index-list"><a href="interfaces/Certification.html" class="tsd-index-link tsd-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-interface)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-256-path"></rect><path d="M9.51 16V15.016H11.298V8.224H9.51V7.24H14.19V8.224H12.402V15.016H14.19V16H9.51Z" fill="var(--color-text)" id="icon-256-text"></path></svg><span>Certification</span></a>
+<a href="interfaces/Commendation.html" class="tsd-index-link tsd-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg><span>Commendation</span></a>
+<a href="interfaces/Corporation.html" class="tsd-index-link tsd-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg><span>Corporation</span></a>
+<a href="interfaces/Finance.html" class="tsd-index-link tsd-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg><span>Finance</span></a>
+<a href="interfaces/GbizinfoClientOption.html" class="tsd-index-link tsd-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg><span>Gbizinfo<wbr/>Client<wbr/>Option</span></a>
+<a href="interfaces/MajorShareholder.html" class="tsd-index-link tsd-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg><span>Major<wbr/>Shareholder</span></a>
+<a href="interfaces/ManagementIndex.html" class="tsd-index-link tsd-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg><span>Management<wbr/>Index</span></a>
+<a href="interfaces/Patent.html" class="tsd-index-link tsd-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg><span>Patent</span></a>
+<a href="interfaces/PatentClassification.html" class="tsd-index-link tsd-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg><span>Patent<wbr/>Classification</span></a>
+<a href="interfaces/Procurement.html" class="tsd-index-link tsd-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg><span>Procurement</span></a>
+<a href="interfaces/Subsidy.html" class="tsd-index-link tsd-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg><span>Subsidy</span></a>
+<a href="interfaces/TimeRangeResponse.html" class="tsd-index-link tsd-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg><span>Time<wbr/>Range<wbr/>Response</span></a>
+<a href="interfaces/Workplace.html" class="tsd-index-link tsd-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg><span>Workplace</span></a>
+<a href="interfaces/WorkplaceBaseInformation.html" class="tsd-index-link tsd-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg><span>Workplace<wbr/>Base<wbr/>Information</span></a>
+<a href="interfaces/WorkplaceCompatibilityOfChildrenAndWork.html" class="tsd-index-link tsd-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg><span>Workplace<wbr/>Compatibility<wbr/>Of<wbr/>Children<wbr/>And<wbr/>Work</span></a>
+<a href="interfaces/WorkplaceWomenActivityInformation.html" class="tsd-index-link tsd-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg><span>Workplace<wbr/>Women<wbr/>Activity<wbr/>Information</span></a>
+</div></section></section></section></div>
 <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 <div class="tsd-navigation settings">
 <details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
@@ -95,8 +59,8 @@
 <ul></ul></li></ul></div></details></nav>
 <nav class="tsd-navigation secondary menu-sticky">
 <ul>
-<li class="tsd-kind-class"><a href="classes/GbizinfoClient.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-class)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-128-path"></rect><path d="M11.898 16.1201C11.098 16.1201 10.466 15.8961 10.002 15.4481C9.53803 15.0001 9.30603 14.3841 9.30603 13.6001V9.64012C9.30603 8.85612 9.53803 8.24012 10.002 7.79212C10.466 7.34412 11.098 7.12012 11.898 7.12012C12.682 7.12012 13.306 7.34812 13.77 7.80412C14.234 8.25212 14.466 8.86412 14.466 9.64012H13.386C13.386 9.14412 13.254 8.76412 12.99 8.50012C12.734 8.22812 12.37 8.09212 11.898 8.09212C11.426 8.09212 11.054 8.22412 10.782 8.48812C10.518 8.75212 10.386 9.13212 10.386 9.62812V13.6001C10.386 14.0961 10.518 14.4801 10.782 14.7521C11.054 15.0161 11.426 15.1481 11.898 15.1481C12.37 15.1481 12.734 15.0161 12.99 14.7521C13.254 14.4801 13.386 14.0961 13.386 13.6001H14.466C14.466 14.3761 14.234 14.9921 13.77 15.4481C13.306 15.8961 12.682 16.1201 11.898 16.1201Z" fill="var(--color-text)" id="icon-128-text"></path></svg>Gbizinfo<wbr/>Client</a></li>
-<li class="tsd-kind-interface"><a href="interfaces/Certification.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-interface)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-256-path"></rect><path d="M9.51 16V15.016H11.298V8.224H9.51V7.24H14.19V8.224H12.402V15.016H14.19V16H9.51Z" fill="var(--color-text)" id="icon-256-text"></path></svg>Certification</a></li>
+<li class="tsd-kind-class"><a href="classes/GbizinfoClient.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>Gbizinfo<wbr/>Client</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/Certification.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Certification</a></li>
 <li class="tsd-kind-interface"><a href="interfaces/Commendation.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Commendation</a></li>
 <li class="tsd-kind-interface"><a href="interfaces/Corporation.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Corporation</a></li>
 <li class="tsd-kind-interface"><a href="interfaces/Finance.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Finance</a></li>

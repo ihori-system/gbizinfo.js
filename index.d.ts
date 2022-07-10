@@ -1,5 +1,336 @@
 /**
- * interfaces
+ * gBizINFO REST API client
+ * [API Document](https://info.gbiz.go.jp/hojin/swagger-ui.html)
+ */
+ export class GbizinfoClient {
+  /**
+   * @param options APIクライアントのオプション
+   */
+  constructor(options: GbizinfoClientOption)
+
+  /**
+   * gBizINFOから法人基本情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API/getUsingGET)
+   * @param corporateNumber 法人番号
+   * @returns 法人基本情報
+   */
+  findByCorporateNumber(corporateNumber: string): Promise<Array<Corporation>>
+
+  /**
+   * gBizINFOから法人基本情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API/getUsingGET)
+   * @param corporateNumber 法人番号
+   * @returns レスポンスボディ
+   */
+  findByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
+
+  /**
+   * gBizINFOから期間内に追加/更新された法人基本情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API_(Period-specified_Search)/getUpdateInfoUsingGET)
+   * @param page 検索結果のページ番号
+   * @param from 検索対象期間の開始日
+   * @param to 検索対象期間の終了日
+   * @returns 法人基本情報
+   */
+  findByTimeRange(page: number, from: Date, to: Date): Promise<TimeRangeResponse>
+
+  /**
+   * gBizINFOから期間内に追加/更新された法人基本情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API_(Period-specified_Search)/getUpdateInfoUsingGET)
+   * @param page 検索結果のページ番号
+   * @param from 検索対象期間の開始日
+   * @param to 検索対象期間の終了日
+   * @returns レスポンスボディ
+   */
+  findByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
+
+  /**
+   * gBizINFOから届出・認定情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API/getCertificationUsingGET)
+   * @param corporateNumber 法人番号
+   * @returns 法人基本情報および届出・認定情報
+   */
+  findCertificationByCorporateNumber(corporateNumber: string): Promise<Array<Corporation>>
+
+  /**
+   * gBizINFOから届出・認定情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API/getCertificationUsingGET)
+   * @param corporateNumber 法人番号
+   * @returns レスポンスボディ
+   */
+  findCertificationByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
+
+  /**
+   * gBizINFOから期間内に追加/更新された届出・認定情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API_(Period-specified_Search)/getCertificationUpdateInfoUsingGET)
+   * @param page 検索結果のページ番号
+   * @param from 検索対象期間の開始日
+   * @param to 検索対象期間の終了日
+   * @returns 法人基本情報および届出・認定情報
+   */
+  findCertificationByTimeRange(page: number, from: Date, to: Date): Promise<TimeRangeResponse>
+
+  /**
+   * gBizINFOから期間内に追加/更新された届出・認定情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API_(Period-specified_Search)/getCertificationUpdateInfoUsingGET)
+   * @param page 検索結果のページ番号
+   * @param from 検索対象期間の開始日
+   * @param to 検索対象期間の終了日
+   * @returns レスポンスボディ
+   */
+  findCertificationByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
+
+  /**
+   * gBizINFOから表彰情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API/getCommendationUsingGET)
+   * @param corporateNumber 法人番号
+   * @returns 法人基本情報および表彰情報
+   */
+  findCommendationByCorporateNumber(corporateNumber: string): Promise<Array<Corporation>>
+
+  /**
+   * gBizINFOから表彰情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API/getCommendationUsingGET)
+   * @param corporateNumber 法人番号
+   * @returns レスポンスボディ
+   */
+  findCommendationByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
+
+  /**
+   * gBizINFOから期間内に追加/更新された表彰情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API_(Period-specified_Search)/getCommendationUpdateInfoUsingGET)
+   * @param page 検索結果のページ番号
+   * @param from 検索対象期間の開始日
+   * @param to 検索対象期間の終了日
+   * @returns 法人基本情報および表彰情報
+   */
+  findCommendationByTimeRange(page: number, from: Date, to: Date): Promise<TimeRangeResponse>
+
+  /**
+   * gBizINFOから期間内に追加/更新された表彰情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API_(Period-specified_Search)/getCommendationUpdateInfoUsingGET)
+   * @param page 検索結果のページ番号
+   * @param from 検索対象期間の開始日
+   * @param to 検索対象期間の終了日
+   * @returns レスポンスボディ
+   */
+  findCommendationByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
+
+  /**
+   * gBizINFOから財務情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API/getFinanceUsingGET)
+   * @param corporateNumber 法人番号
+   * @returns 法人基本情報および財務情報
+   */
+  findFinanceByCorporateNumber(corporateNumber: string): Promise<Array<Corporation>>
+
+  /**
+   * gBizINFOから財務情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API/getFinanceUsingGET)
+   * @param corporateNumber 法人番号
+   * @returns レスポンスボディ
+   */
+  findFinanceByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
+
+  /**
+   * gBizINFOから期間内に追加/更新された財務情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API_(Period-specified_Search)/getFinanceUpdateInfoUsingGET)
+   * @param page 検索結果のページ番号
+   * @param from 検索対象期間の開始日
+   * @param to 検索対象期間の終了日
+   * @returns 法人基本情報および財務情報
+   */
+  findFinanceByTimeRange(page: number, from: Date, to: Date): Promise<TimeRangeResponse>
+
+  /**
+   * gBizINFOから期間内に追加/更新された財務情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API_(Period-specified_Search)/getFinanceUpdateInfoUsingGET)
+   * @param page 検索結果のページ番号
+   * @param from 検索対象期間の開始日
+   * @param to 検索対象期間の終了日
+   * @returns レスポンスボディ
+   */
+  findFinanceByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
+
+  /**
+   * gBizINFOから特許情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API/getPatentUsingGET)
+   * @param corporateNumber 法人番号
+   * @returns 法人基本情報および特許情報
+   */
+  findPatentByCorporateNumber(corporateNumber: string): Promise<Array<Corporation>>
+
+  /**
+   * gBizINFOから特許情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API/getPatentUsingGET)
+   * @param corporateNumber 法人番号
+   * @returns レスポンスボディ
+   */
+  findPatentByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
+
+  /**
+   * gBizINFOから期間内に追加/更新された特許情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API_(Period-specified_Search)/getPatentUpdateInfoUsingGET)
+   * @param page 検索結果のページ番号
+   * @param from 検索対象期間の開始日
+   * @param to 検索対象期間の終了日
+   * @returns 法人基本情報および特許情報
+   */
+  findPatentByTimeRange(page: number, from: Date, to: Date): Promise<TimeRangeResponse>
+
+  /**
+   * gBizINFOから期間内に追加/更新された特許情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API_(Period-specified_Search)/getPatentUpdateInfoUsingGET)
+   * @param page 検索結果のページ番号
+   * @param from 検索対象期間の開始日
+   * @param to 検索対象期間の終了日
+   * @returns レスポンスボディ
+   */
+  findPatentByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
+
+  /**
+   * gBizINFOから調達情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API/getProcurementUsingGET)
+   * @param corporateNumber 法人番号
+   * @returns 法人基本情報および調達情報
+   */
+  findProcurementByCorporateNumber(corporateNumber: string): Promise<Array<Corporation>>
+
+  /**
+   * gBizINFOから調達情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API/getProcurementUsingGET)
+   * @param corporateNumber 法人番号
+   * @returns レスポンスボディ
+   */
+  findProcurementByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
+
+  /**
+   * gBizINFOから期間内に追加/更新された調達情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API_(Period-specified_Search)/getProcurementUpdateInfoUsingGET)
+   * @param page 検索結果のページ番号
+   * @param from 検索対象期間の開始日
+   * @param to 検索対象期間の終了日
+   * @returns 法人基本情報および調達情報
+   */
+  findProcurementByTimeRange(page: number, from: Date, to: Date): Promise<TimeRangeResponse>
+
+  /**
+   * gBizINFOから期間内に追加/更新された調達情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API_(Period-specified_Search)/getProcurementUpdateInfoUsingGET)
+   * @param page 検索結果のページ番号
+   * @param from 検索対象期間の開始日
+   * @param to 検索対象期間の終了日
+   * @returns レスポンスボディ
+   */
+  findProcurementByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
+
+  /**
+   * gBizINFOから補助金情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API/getSubsidyUsingGET)
+   * @param corporateNumber 法人番号
+   * @returns 法人基本情報および補助金情報
+   */
+  findSubsidyByCorporateNumber(corporateNumber: string): Promise<Array<Corporation>>
+
+  /**
+   * gBizINFOから補助金情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API/getSubsidyUsingGET)
+   * @param corporateNumber 法人番号
+   * @returns レスポンスボディ
+   */
+  findSubsidyByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
+
+  /**
+   * gBizINFOから期間内に追加/更新された補助金情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API_(Period-specified_Search)/getSubsidyUpdateInfoUsingGET)
+   * @param page 検索結果のページ番号
+   * @param from 検索対象期間の開始日
+   * @param to 検索対象期間の終了日
+   * @returns 法人基本情報および補助金
+   */
+  findSubsidyByTimeRange(page: number, from: Date, to: Date): Promise<TimeRangeResponse>
+
+  /**
+   * gBizINFOから期間内に追加/更新された補助金情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API_(Period-specified_Search)/getSubsidyUpdateInfoUsingGET)
+   * @param page 検索結果のページ番号
+   * @param from 検索対象期間の開始日
+   * @param to 検索対象期間の終了日
+   * @returns 法人基本情報および補助金情報
+   */
+  findSubsidyByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
+
+  /**
+   * gBizINFOから職場情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API/getWorkplaceInformationUsingGET)
+   * @param corporateNumber 法人番号
+   * @returns 法人基本情報および職場情報
+   */
+  findWorkplaceByCorporateNumber(corporateNumber: string): Promise<Array<Corporation>>
+
+  /**
+   * gBizINFOから職場情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API/getWorkplaceInformationUsingGET)
+   * @param corporateNumber 法人番号
+   * @returns レスポンスボディ
+   */
+  findWorkplaceByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
+
+  /**
+   * gBizINFOから期間内に追加/更新された職場情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API_(Period-specified_Search)/getWorkplaceInformationUpdateInfoUsingGET)
+   * @param page 検索結果のページ番号
+   * @param from 検索対象期間の開始日
+   * @param to 検索対象期間の終了日
+   * @returns 法人基本情報および職場情報
+   */
+  findWorkplaceByTimeRange(page: number, from: Date, to: Date): Promise<TimeRangeResponse>
+
+  /**
+   * gBizINFOから期間内に追加/更新された職場情報を取得します。
+   * 
+   * [APIドキュメント](https://info.gbiz.go.jp/hojin/swagger-ui.html#!/gBizINFO_REST_API_(Period-specified_Search)/getWorkplaceInformationUpdateInfoUsingGET)
+   * @param page 検索結果のページ番号
+   * @param from 検索対象期間の開始日
+   * @param to 検索対象期間の終了日
+   * @returns レスポンスボディ
+   */
+  findWorkplaceByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
+}
+
+/**
+ * 届出・認定情報
  */
 export interface Certification {
   category?: string
@@ -11,6 +342,9 @@ export interface Certification {
   title: string
 }
 
+/**
+ * 表彰情報
+ */
 export interface Commendation {
   category?: string
   dateOfCommendation?: string
@@ -19,13 +353,22 @@ export interface Commendation {
   title: string
 }
 
+/**
+ * 法人基本情報
+ */
 export interface Corporation {
   businessItems?: Array<string>
   businessSummary?: string
   capitalStock?: number
+  /**
+   * 届出・認定情報
+   */
   certification?: Array<Certification>
   closeCause?: string
   closeDate?: string
+  /**
+   * 表彰情報
+   */
   commendation?: Array<Commendation>
   companySizeFemale?: number
   companySizeMale?: number
@@ -33,26 +376,55 @@ export interface Corporation {
   corporateNumber: string
   dateOfEstablishment?: string
   employeeNumber?: number
+  /**
+   * 財務情報
+   */
   finance?: Finance
   foundingYear?: number
   kana?: string
   location?: string
   name: string
   nameEn?: string
+  /**
+   * 特許情報
+   */
+  patent?: Array<Patent>
   postalCode?: string
+  /**
+   * 調達情報
+   */
   procurement?: Array<Procurement>
   representativeName?: string
   representativePosition?: string
   status: string
+  /**
+   * 補助金情報
+   */
   subsidy?: Array<Subsidy>
   updateDate: string
+  /**
+   * 職場情報
+   */
+  workplace?: Workplace
 }
 
+/**
+ * 財務情報
+ */
 export interface Finance {
   accountingStandards: string
   fiscalYearCoverPage: string
   majorShareholders: Array<MajorShareholder>
   managementIndex: Array<ManagementIndex>
+}
+
+export interface GbizinfoClientOption {
+  /**
+   * APIトークン
+   * 
+   * [Web API利用申請](https://info.gbiz.go.jp/hojin/api_registration/form)から申請・取得ができます。
+   */
+  token: string
 }
 
 export interface MajorShareholder {
@@ -88,6 +460,9 @@ export interface ManagementIndex {
   totalAssetsSummaryOfBusinessResultsUnitRef: string
 }
 
+/**
+ * 特許情報
+ */
 export interface Patent {
   applicationDate: string
   applicationNumber: string
@@ -102,6 +477,9 @@ export interface PatentClassification {
   japanese?: string
 }
 
+/**
+ * 調達情報
+ */
 export interface Procurement {
   amount: number
   dateOfOrder?: string
@@ -110,6 +488,9 @@ export interface Procurement {
   title: string
 }
 
+/**
+ * 補助金情報
+ */
 export interface Subsidy {
   amount: string
   dateOfApproval: string
@@ -121,6 +502,28 @@ export interface Subsidy {
   title: string
 }
 
+export interface TimeRangeResponse {
+  /**
+   * 法人基本情報
+   */
+  corporations: Array<Corporation>
+  /**
+   * 現在のページ番号
+   */
+  pageNumber: number
+  /**
+   * 総件数
+   */
+  totalCount: number
+  /**
+   * 総ページ数
+   */
+  totalPage: number
+}
+
+/**
+ * 職場情報
+ */
 export interface Workplace {
   baseInformation?: WorkplaceBaseInformation
   compatibilityOfChildcareAndWork?: WorkplaceCompatibilityOfChildrenAndWork
@@ -150,88 +553,4 @@ export interface WorkplaceWomenActivityInformation {
   femaleWorkersProportionType?: string
   genderTotalOfManager?: number
   genderTotalOfOfficers?: number
-}
-
-/**
- * classes
- */
-export class GbizinfoClient {
-  constructor(options: GbizinfoClientOption)
-
-  findByCorporateNumber(corporateNumber: string): Promise<Array<Corporation>>
-  findByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
-  findCertificationByCorporateNumber(corporateNumber: string): Promise<Array<Corporation>>
-  findCertificationByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
-  findCommendationByCorporateNumber(corporateNumber: string): Promise<Array<Corporation>>
-  findCommendationByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
-  findFinanceByCorporateNumber(corporateNumber: string): Promise<Array<Corporation>>
-  findFinanceByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
-  findPatentByCorporateNumber(corporateNumber: string): Promise<Array<Corporation>>
-  findPatentByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
-  findProcurementByCorporateNumber(corporateNumber: string): Promise<Array<Corporation>>
-  findProcurementByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
-  findSubsidyByCorporateNumber(corporateNumber: string): Promise<Array<Corporation>>
-  findSubsidyByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
-  findWorkplaceByCorporateNumber(corporateNumber: string): Promise<Array<Corporation>>
-  findWorkplaceByCorporateNumberRaw(corporateNumber: string): Promise<unknown>
-  findByTimeRange(page: number, from: Date, to: Date): Promise<{
-    totalCount: number
-    totalPage: number
-    pageNumber: number
-    corporations: Array<Corporation>
-  }>
-  findByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
-  findCertificationByTimeRange(page: number, from: Date, to: Date): Promise<{
-    totalCount: number
-    totalPage: number
-    pageNumber: number
-    corporations: Array<Corporation>
-  }>
-  findCertificationByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
-  findCommendationByTimeRange(page: number, from: Date, to: Date): Promise<{
-    totalCount: number
-    totalPage: number
-    pageNumber: number
-    corporations: Array<Corporation>
-  }>
-  findCommendationByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>  
-  findFinanceByTimeRange(page: number, from: Date, to: Date): Promise<{
-    totalCount: number
-    totalPage: number
-    pageNumber: number
-    corporations: Array<Corporation>
-  }>
-  findFinanceByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
-  findPatentByTimeRange(page: number, from: Date, to: Date): Promise<{
-    totalCount: number
-    totalPage: number
-    pageNumber: number
-    corporations: Array<Corporation>
-  }>
-  findPatentByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
-  findProcurementByTimeRange(page: number, from: Date, to: Date): Promise<{
-    totalCount: number
-    totalPage: number
-    pageNumber: number
-    corporations: Array<Corporation>
-  }>
-  findProcurementByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
-  findSubsidyByTimeRange(page: number, from: Date, to: Date): Promise<{
-    totalCount: number
-    totalPage: number
-    pageNumber: number
-    corporations: Array<Corporation>
-  }>
-  findSubsidyByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
-  findWorkplaceByTimeRange(page: number, from: Date, to: Date): Promise<{
-    totalCount: number
-    totalPage: number
-    pageNumber: number
-    corporations: Array<Corporation>
-  }>
-  findWorkplaceByTimeRangeRaw(page: number, from: Date, to: Date): Promise<unknown>
-}
-
-export interface GbizinfoClientOption {
-  token: string
 }
