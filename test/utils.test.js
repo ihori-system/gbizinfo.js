@@ -1,6 +1,24 @@
 /* eslint-env jest */
 
-const { validateTimeRangeOptions } = require('../lib/utils')
+const {
+  timeRangeApiResponseHandler,
+  validateTimeRangeOptions
+} = require('../lib/utils')
+
+describe('timeRangeApiResponseHandler', () => {
+  test('throws on 401', () => {
+    expect(() => timeRangeApiResponseHandler({ statusCode: 401 })).toThrow()
+  })
+
+  test('not to throw on 401', () => {
+    expect(timeRangeApiResponseHandler({ statusCode: 404 })).toEqual({
+      totalCount: 0,
+      totalPage: 0,
+      pageNumber: 0,
+      'hojin-infos': []
+    })
+  })
+})
 
 describe('validateTimeRangeOptions', () => {
   test('throws without argument `page`', () => {

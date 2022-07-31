@@ -64,21 +64,14 @@ const main = async () => {
   for (const interval of Array(400).fill(1)) {
     const data = await client.findPatentByTimeRangeRaw(1, date, date)
 
-    if (data['hojin-infos'] == null) {
-      console.log('skip:', date)
-      await sleep(3000)
-      date.setDate(date.getDate() + interval)
-      continue
-    }
-
-    console.log('found:', date)
-    await sleep(3000)
-
     assert.ok(data.totalCount != null)
     assert.ok(data.totalPage != null)
     assert.ok(data.pageNumber != null)
+    assert.ok(data['hojin-infos'] != null)
 
     console.log(`totalCount: ${data.totalCount}, totalPage: ${data.totalPage}, pageNumber: ${data.pageNumber}`)
+
+    await sleep(3000)
 
     data['hojin-infos'].forEach(validate)
 
