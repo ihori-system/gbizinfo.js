@@ -87,7 +87,7 @@ describe('findByTimeRange', () => {
   test('find by time range', async () => {
     const client = new GbizinfoClient({ token: process.env.X_HOJININFO_API_TOKEN })
     const actual = await client.findByTimeRange(1, new Date('2021-04-01'), new Date('2021-04-01'))
-    expect(actual.totalCount).toEqual(1694)
+    expect(actual.totalCount).toEqual(1680)
     expect(actual.totalPage).toEqual(17)
     expect(actual.pageNumber).toEqual(1)
     expect(actual.corporations.length).toEqual(100)
@@ -173,10 +173,10 @@ describe('findWorkplaceByTimeRange', () => {
   test('find workplace by time range', async () => {
     const client = new GbizinfoClient({ token: process.env.X_HOJININFO_API_TOKEN })
     const actual = await client.findWorkplaceByTimeRange(1, new Date('2021-07-21'), new Date('2021-07-21'))
-    expect(actual.totalCount).toEqual(18)
+    expect(actual.totalCount).toEqual(9)
     expect(actual.totalPage).toEqual(1)
     expect(actual.pageNumber).toEqual(1)
-    expect(actual.corporations.length).toEqual(18)
+    expect(actual.corporations.length).toEqual(9)
     expect(actual.corporations[0].workplace).toBeDefined()
   })
 })
