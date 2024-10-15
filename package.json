@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/ihori-system/gbizinfo.js#readme",
   "dependencies": {
-    "undici": "^5.10.0"
+    "undici": "^6.20.1"
   },
   "devDependencies": {
     "dotenv": "^16.0.3",
